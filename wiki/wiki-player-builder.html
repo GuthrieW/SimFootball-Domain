@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Wiki Player Page Builder</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./scripts/wiki-player-builder.js" type="text/javascript" ></script>
+    <script src="./scripts/teams.js" type="text/javascript" ></script>
+  </head>
+  <body>
+    <div id="name-information" class="container">
+      <label for="first-name-input">First Name</label>
+      <input id="first-name-input" type="text" name="" value="" title="Your player's first name.">
+      <label for="middle-name-input">Middle Name</label>
+      <input id="middle-name-input" type="text" name="" value="" title="Your player's middle name.">
+      <label for="last-name-input">Last Name</label>
+      <input id="last-name-input" type="text" name="" value="" title="Your player's last name.">
+    </div>
+    <div id="birth-information" class="container">
+      <label for="date-of-birth-input">Date of Birth</label>
+      <input id="date-of-birth-input" type="date" name="" value="">
+    </div>
+    <div id="height-information" class="container">
+      <label for="height-feet-input">Feet</label>
+      <input id="height-feet-input" type="number" name="" value="">
+      <label for="height-inches-input">Inches</label>
+      <input id="height-inches-input" type="number" name="" value="">
+    </div>
+    <div id="current-team-information" class="container">
+      <label for="current-team-select">Current Team</label>
+      <select id="current-team-select" class="" name=""></select>
+      <label for="current-team-since-input">Current Team Since</label>
+      <input id="current-team-since-input" type="text" name="" value="">
+    </div>
+    <div id="birthplace-information" class="">
+      <label for=""></label>
+      <input id="" type="text" name="" value="">
+    </div>
+
+
+
+    <!-- <div id="-information" class="container">
+      <label for=""></label>
+      <input id="" type="text" name="" value="">
+    </div> -->
+  </body>
+  <script type="text/javascript">
+    populateSelect("current-team-select", getTeamsAsStrings());
+  </script>
+</html>
