@@ -1,3 +1,24 @@
+function checkShowStatesOrProvinces() {
+  const USA_COUNTRY_VALUE = 'United States of America (the)';
+  const CANADA_COUNTRY_VALUE = 'Canada';
+  const selectedCountry = $('#country-select').children("option:selected").val();
+  if (selectedCountry === USA_COUNTRY_VALUE) {
+    populateSelect('state-province-select', usaStates);
+    $('#state-province-select').prop('disabled', false);
+    $('#state-province-select').show();
+  } else if (selectedCountry === CANADA_COUNTRY_VALUE) {
+    populateSelect('state-province-select', canadaProvinces);
+    $('#state-province-select').prop('disabled', false);
+    $('#state-province-select').show();
+  } else {
+    populateSelect('state-province-select', []);
+    $('#state-province-select').prop('disabled', true);
+    $('#state-province-select').hide();
+  }
+
+  return;
+}
+
 const countries = [
 	'Afghanistan',
 	'Albania',
