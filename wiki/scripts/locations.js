@@ -5,15 +5,12 @@ function checkShowStatesOrProvinces() {
   if (selectedCountry === USA_COUNTRY_VALUE) {
     populateSelect('state-province-select', usaStates);
     $('#state-province-select').prop('disabled', false);
-    $('#state-province-select').show();
   } else if (selectedCountry === CANADA_COUNTRY_VALUE) {
     populateSelect('state-province-select', canadaProvinces);
     $('#state-province-select').prop('disabled', false);
-    $('#state-province-select').show();
   } else {
     populateSelect('state-province-select', []);
     $('#state-province-select').prop('disabled', true);
-    $('#state-province-select').hide();
   }
 
   return;
