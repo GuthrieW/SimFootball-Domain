@@ -71,6 +71,26 @@ function generatePlayerWikiPage() {
   //
 }
 
+function getCareerHighlightsInformation() {
+  const numRows = getRowsInTable('career-highlights-table');
+
+  var i;
+  var careerHighlights = [];
+  for (i = 1; i < numRows; i++) {
+    const careerHighlightName = $('').val();
+    const careerHighlightLeague = $('').val();
+    const careerHighlightSeasons = $('').val();
+
+    careerHighlights.push({
+      name: careerHighlightName,
+      league: careerHighlightLeague,
+      seasons: careerHighlightSeasons
+    })
+  }
+
+  return careerHighlights;
+}
+
 function getTeamHistoryInformation() {
   const numRows = getRowsInTable('team-history-table');
 

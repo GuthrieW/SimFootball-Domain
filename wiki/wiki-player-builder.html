@@ -10,13 +10,15 @@
 
     <!-- local scripts -->
     <script src="./scripts/wiki-player-builder.js" type="text/javascript" ></script>
-    <script src="./scripts/teams.js" type="text/javascript" ></script>
-    <script src="./scripts/locations.js" type="text/javascript" ></script>
-    <script src="./scripts/positions.js" type="text/javascript" ></script>
-    <script src="./scripts/errorChecking.js" type="text/javascript" ></script>
-    <script src="./scripts/table.js" type="text/javascript" ></script>
-    <script src="./scripts/select.js" type="text/javascript" ></script>
-    <script src="./scripts/stats.js" type="text/javascript" ></script>
+    <script src="./scripts/teams.js" type="text/javascript"></script>
+    <script src="./scripts/locations.js" type="text/javascript"></script>
+    <script src="./scripts/positions.js" type="text/javascript"></script>
+    <script src="./scripts/errorChecking.js" type="text/javascript"></script>
+    <script src="./scripts/table.js" type="text/javascript"></script>
+    <script src="./scripts/select.js" type="text/javascript"></script>
+    <script src="./scripts/stats.js" type="text/javascript"></script>
+    <script src="./scripts/leagues.js" type="text/javascript"></script>
+    <script src="./scripts/config.js" type="text/javascript"></script>
 
 
     <!-- cdn scripts -->
@@ -53,12 +55,12 @@
         <select id="current-team-select" class="" name="Current Team"></select>
         <label for="current-team-since-input">Current Team Since</label>
         <input id="current-team-since-input" type="text" name="Current Team Since" value="">
-        <script type="text/javascript">populateSelect("current-team-select", getTeamsAsStrings("both"), 'Select a Team')</script>
+        <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings("both"), 'Select a Team')</script>
       </div>
       <div id="birthplace-information" class="container">
         <label for="country-select">Country</label>
         <select id="country-select" class="" name="Country" onchange="checkShowStatesOrProvinces();"></select>
-        <script type="text/javascript">populateSelect("country-select", countries)</script>
+        <script type="text/javascript">populateSelectWithList("country-select", countries)</script>
         <div id="state-province-information" class="">
           <label for="state-province-select">State/Province</label>
           <select id="state-province-select" class="" name="State/Province"></select>
@@ -82,7 +84,7 @@
       <div id="position-information" class="container">
         <label for="position-select">Position</label>
         <select id="position-select" class="" name="Position"></select>
-        <script type="text/javascript">populateSelect("position-select", positions)</script>
+        <script type="text/javascript">populateSelectWithList("position-select", positions)</script>
       </div>
       <div id="jersey-information" class="container">
         <label for="jersey-number-input">Jersey Number</label>
@@ -103,7 +105,7 @@
         <input id="nsfl-round-drafted" type="number" name="" value="" min="1">
         <label for="nsfl-pick-drafted">Pick Number</label>
         <input id="nsfl-pick-drafted" type="number" name="" value="" min="1">
-        <script type="text/javascript">populateSelect("nsfl-team-drafted-by-select", getTeamsAsStrings("nsfl"), 'Select a Team')</script>
+        <script type="text/javascript">populateSelectWithList("nsfl-team-drafted-by-select", getTeamsAsStrings("nsfl"), 'Select a Team')</script>
       </div>
       <div id="dsfl-draft-information" class="container">
         <label for="dsfl-team-drafted-by">DSFL Team Drafted By</label>
@@ -114,7 +116,7 @@
         <input id="dsfl-round-drafted" type="number" name="" value="" min="1">
         <label for="dsfl-pick-drafted">Pick Number</label>
         <input id="dsfl-pick-drafted" type="number" name="" value="" min="1">
-        <script type="text/javascript">populateSelect("dsfl-team-drafted-by-select", getTeamsAsStrings("dsfl"), 'Select a Team')</script>
+        <script type="text/javascript">populateSelectWithList("dsfl-team-drafted-by-select", getTeamsAsStrings("dsfl"), 'Select a Team')</script>
       </div>
       <div id="team-history-information" class="container">
         <label for="team-history-table">Team History</label>
@@ -130,13 +132,13 @@
               <td><input id="team-history-joined-1-input" type="number" name="" value="" min="1"></td>
               <td><input id="team-history-until-1-input" type="number" name="" value="" min="1"></td>
 
-              <script type="text/javascript">populateSelect("team-history-name-1-select", getTeamsAsStrings("both"), 'Select a Team')</script>
+              <script type="text/javascript">populateSelectWithList("team-history-name-1-select", getTeamsAsStrings("both"), 'Select a Team')</script>
             </tr>
           </tbody>
         </table>
-        <button type="button" name="button" onclick="addRow('team-history-table');">Add Row</button>
+        <button type="button" name="button" onclick="addRowToHistoryTable('team-history-table');">Add Row</button>
         <button type="button" name="button" onclick="removeRow('team-history-table');">Remove Row</button>'
-        <script type="text/javascript">populateSelect("current-team-select", getTeamsAsStrings("both"), 'Select a Team')</script>
+        <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings("both"), 'Select a Team')</script>
       </div>
       <div id="combine-stats-information" class="container">
         <label for="combine-stats-table">Team History</label>
@@ -189,11 +191,28 @@
       </div>
       <div id="stats-table-information" class="container">
         <select id="stats-table-select" class="" name="" onchange="checkIfSelectHasMaxSelected(this, 8); updateVisibleStats(this);" multiple></select>
-        <script type="text/javascript">populateSelect('stats-table-select', getStatNames(), null)</script>
+        <script type="text/javascript">populateSelectWithList('stats-table-select', getStatNames(), null)</script>
       </div>
       <button type="button" name="button" onclick="generatePlayerWikiPage();">Generate Player Wiki Page</button>
     </div>
 
-    <!-- TODO: Add career highlights -->
+    <div id="career-highlights-information" class="container">
+      <label for="career-highlights-table">Career Highlights</label>
+      <table id="career-highlights-table">
+        <tr>
+          <th>Name</th><th>League</th><th>Seasons</th>
+        </tr>
+        <tr>
+          <td><input id="career-highlights-name-1-input" class="" name="Career Highlights Name 1"></td>
+          <td><select id="career-highlights-league-1-select" class="" name="Career Highlights League 1"></select></td>
+          <td><select id="career-highlights-season-1-select" class="" name="Career Highlights Season 1"></select></td>
+
+          <script type="text/javascript">populateSelectWithList('career-highlights-league-1-select', LEAGUE_NAMES, 'Select a League')</script>
+          <script type="text/javascript">populateSelectWithNumbers('career-highlights-season-1-select', 1, CURRENT_SEASON)</script>
+        </tr>
+      </table>
+      <button type="button" name="button" onclick="addRowToHighlightsTable();">Add Row</button>
+      <button type="button" name="button" onclick="removeRow('career-highlights-table');">Remove Row</button>'
+    </div>
   </body>
 </html>

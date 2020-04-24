@@ -4,13 +4,13 @@ function checkShowStatesOrProvinces() {
   const selectedCountry = $('#country-select').children("option:selected").val();
 
   if (selectedCountry === USA_COUNTRY_VALUE) {
-    populateSelect('state-province-select', usaStates, 'State/Province');
+    populateSelectWithList('state-province-select', usaStates, 'State/Province');
     $('#state-province-select').prop('disabled', false);
   } else if (selectedCountry === CANADA_COUNTRY_VALUE) {
-    populateSelect('state-province-select', canadaProvinces, 'State/Province');
+    populateSelectWithList('state-province-select', canadaProvinces, 'State/Province');
     $('#state-province-select').prop('disabled', false);
   } else {
-    populateSelect('state-province-select', [], 'State/Province');
+    populateSelectWithList('state-province-select', [], 'State/Province');
     $('#state-province-select').prop('disabled', true);
   }
 

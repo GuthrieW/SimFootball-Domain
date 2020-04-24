@@ -1,4 +1,4 @@
-function populateSelect(selectId, options, defaultOption = 'Select an option') {
+function populateSelectWithList(selectId, options, defaultOption = 'Select an option') {
   emptySelect(selectId);
   if (defaultOption != null) {
     appendOptionToSelect(selectId, defaultOption);
@@ -6,6 +6,16 @@ function populateSelect(selectId, options, defaultOption = 'Select an option') {
   $.each(options, function(index, option) {
     appendOptionToSelect(selectId, option);
   });
+
+  return;
+}
+
+function populateSelectWithNumbers(selectId, min = 1, max = 9) {
+  emptySelect(selectId);
+  var i;
+  for (i = min; i <= max; i++) {
+    appendOptionToSelect(selectId, i);
+  }
 
   return;
 }
@@ -27,7 +37,6 @@ function emptySelect(selectId) {
 
 function checkIfSelectHasMaxSelected(element, max) {
   const numberOfSelectedValues = $(element).val().length;
-  console.log (numberOfSelectedValues);
   if (numberOfSelectedValues === max) {
     $('#' + element.id + ' > option').each(function() {
       if ($(this).is(':selected')) {
@@ -41,6 +50,8 @@ function checkIfSelectHasMaxSelected(element, max) {
   } else {
     $('#stats-table-select option').removeAttr('disabled');
   }
+
+  return;
 }
 
 function updateVisibleStats(element) {
@@ -51,4 +62,6 @@ function updateVisibleStats(element) {
   $.each(selectedStats, function(index, stat) {
     // TODO: add generation of input HTML for player stats
   });
+
+  return;
 }
