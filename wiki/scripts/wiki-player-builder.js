@@ -1,61 +1,91 @@
+function generatePlayerWikiPage() {
+  // name
+  const firstName = $('#first-name-input').val();
+  const middleName = $('#middle-name-input').val();
+  const lastName = $('#last-name-input').val();
 
-/* select methods */
-function populateSelect(selectId, options, defaultOption = 'Select an option') {
-  emptySelect(selectId);
-  appendOptionToSelect(selectId, defaultOption);
-  $.each(options, function(index, option) {
-    appendOptionToSelect(selectId, option);
-  });
+  // date of birth
+  const dateOfBirth = $('#date-of-birth-input').val();
 
-  return;
+  // height & weight
+  const heightFeet = $('#height-feet-input').val();
+  const heightInches = $('#height-inches-input').val();
+  const weight = $('#weight-input').val();
+
+  // current team
+  const currentTeam = $('#current-team-select').val();
+  const currentTeamSince = $('#current-team-since-input').val();
+
+  // birthplace
+  const country = $('#country-select').val();
+  const stateOrProvince = $('#state-province-select').val();
+  const city = $('#city-input').val();
+
+  // school information
+  const collegeName = $('#college-full-name').val();
+  const collegeAbbreviation = $('#college-abbreviation').val();
+  const highSchoolName = $('#high-school-name').val();
+
+  // combine information
+  const combineLink = $('#combine-link-input').val();
+  const combine40YardDash = $('#40-yard-dash-input').val();
+  const combineShuttleRun = $('#shuttle-run-input').val();
+  const combineConeDrill = $('#cone-drill-input').val();
+  const combineBroadJump = $('#broad-jump-input').val();
+  const combineBenchPress = $('#bench-press-input').val();
+  const combineVertical = $('#vertical-input').val();
+  const combineWonderlic = $('#wonderlic-input').val();
+
+  // player game information
+  const position = $('#position-select').val();
+  const jerseyNumber = $('#jersey-number-input').val();
+
+  // image information
+  const iamgeFilename = $('#image-filename-input').val();
+  const imageCaption = $('#image-caption-input').val();
+
+  // nsfl draft information
+  const nsflDraftTeam = $('#nsfl-team-drafted-by').val();
+  const nsflDraftSeason = $('#nsfl-season-drafted').val();
+  const nsflDraftRound = $('#nsfl-round-drafted').val();
+  const nsflDraftPick = $('#nsfl-pick-drafted').val();
+
+  // dsfl draft information
+  const dsflDraftTeam = $('#dsfl-team-drafted-by').val();
+  const dsflDraftSeason = $('#dsfl-season-drafted').val();
+  const dsflDraftRound = $('#dsfl-round-drafted').val();
+  const dsflDraftPick = $('#dsfl-pick-drafted').val();
+
+  // team history
+  const teamHistory = getTeamHistoryInformation();
+
+  // player page
+  const playerPageId = $('#player-page-id-input').val();
+
+  // player story information
+  const earlyYears = $('#early-years-textarea').val();
+  const collegeSummary = $('#college-summary-textarea').val();
+  const dsflSummary = $('#dsfl-summary-textarea').val();
+  const nsflSummary = $('#nsfl-summary-textarea').val();
+
+  //
 }
 
-function appendOptionToSelect(selectId, option) {
-  $('#' + selectId).append($('<option/>', {
-    value: option,
-    text: option
-  }));
+function getTeamHistoryInformation() {
+  const numRows = getRowsInTable('team-history-table');
 
-  return;
-}
-
-function emptySelect(selectId) {
-  $('#' + selectId).empty();
-
-  return;
-}
-
-/* table methods */
-function addRow(table) {
-  var element = $('#' + table);
-  var numRows = getRowsInTable(table);
-  var newRow = "<tr><td><select id=\"team-history-name-${numRows}-select\" class=\"\" name=\"Team History Name ${numRows}\"></select></td><td><input id=\"team-history-joined-${numRows}-input\" type=\"number\" name=\"\" value=\"\" min=\"1\"></td><td><input id=\"team-history-until-${numRows}-input\" type=\"number\" name=\"\" value=\"\" min=\"1\"></td></tr>";
-  $('#' + table + ' tr:last').after(newRow);
-  return;
-}
-
-function removeRow(table) {
-  console.log(table);
-
-  var numRows = getRowsInTable(table);
-  console.log(numRows);
-  if (numRows <= 2) {
-    return;
+  var i;
+  var teamHistory = [];
+  for (i = 1; i < numRows; i++) {
+    const rowTeamName = $('#team-history-name-' + i + '-select').val();
+    const rowTeamJoined = $('#team-history-joined-' + i + '-input').val();
+    const rowTeamUntil = $('#team-history-until-' + i + '-input').val();
+    teamHistory.push({
+      name: rowTeamName,
+      joined: rowTeamJoined,
+      until: rowTeamUntil
+    });
   }
 
-  console.log(table);
-  $('#' + table + ' tr:last').remove();
-  return;
-}
-
-function getRowsInTable(table) {
-  return $('#' + table + ' tr').length;
-}
-
-function updateTeamHistorySelects(table) {
-  var numRows = getRowsInTable(table);
-  var currentRow;
-  // for (currentRow = 1; currentRow < numRows; currentRow++) {
-  //
-  // }
+  return teamHistory;
 }

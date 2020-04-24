@@ -2,7 +2,8 @@ const VALID_IMAGE_FILE_EXTENSIONS = [
   '.jpg',
   '.jpeg',
   '.gif',
-  '.png'
+  '.png',
+  '.svg'
 ];
 
 function checkWithinRangeInput(input, min, max) {
