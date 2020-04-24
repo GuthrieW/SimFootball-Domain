@@ -1,5 +1,5 @@
 function getAllTeams() {
-  return $.merge(nsflTeams, dsflTeams);
+  return nsflTeams.concat(dsflTeams);
 }
 
 function getTeamsAsStrings(league) {

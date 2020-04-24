@@ -18,7 +18,6 @@ function generatePlayerWikiPage() {
 
   // birthplace
   const country = $('#country-select').val();
-  const stateOrProvince = $('#state-province-select').val();
   const city = $('#city-input').val();
 
   // school information

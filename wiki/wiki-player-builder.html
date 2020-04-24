@@ -59,13 +59,13 @@
       </div>
       <div id="birthplace-information" class="container">
         <label for="country-select">Country</label>
-        <select id="country-select" class="" name="Country" onchange="checkShowStatesOrProvinces();"></select>
-        <script type="text/javascript">populateSelectWithList("country-select", countries)</script>
-        <div id="state-province-information" class="">
+        <select id="country-select" class="" name="Country"></select>
+        <script type="text/javascript">populateSelectWithList("country-select", getNationOrStateNames(), 'Select a State or Country')</script>
+        <!-- <div id="state-province-information" class="">
           <label for="state-province-select">State/Province</label>
           <select id="state-province-select" class="" name="State/Province"></select>
           <script type="text/javascript">checkShowStatesOrProvinces();</script>
-        </div>
+        </div> -->
         <label for="city-input">City</label>
         <input id="city-input" type="text" name="City" value="">
       </div>
@@ -193,26 +193,27 @@
         <select id="stats-table-select" class="" name="" onchange="checkIfSelectHasMaxSelected(this, 8); updateVisibleStats(this);" multiple></select>
         <script type="text/javascript">populateSelectWithList('stats-table-select', getStatNames(), null)</script>
       </div>
+      <div id="career-highlights-information" class="container">
+        <label for="career-highlights-table">Career Highlights</label>
+        <table id="career-highlights-table">
+          <tr>
+            <th>Name</th><th>League</th><th>Seasons</th>
+          </tr>
+          <tr>
+            <td><input id="career-highlights-name-1-input" class="" name="Career Highlights Name 1"></td>
+            <td><select id="career-highlights-league-1-select" class="" name="Career Highlights League 1"></select></td>
+            <td><select id="career-highlights-season-1-select" class="" name="Career Highlights Season 1"></select></td>
+
+            <script type="text/javascript">populateSelectWithList('career-highlights-league-1-select', LEAGUE_NAMES, 'Select a League')</script>
+            <script type="text/javascript">populateSelectWithNumbers('career-highlights-season-1-select', 1, CURRENT_SEASON)</script>
+          </tr>
+        </table>
+        <button type="button" name="button" onclick="addRowToHighlightsTable();">Add Row</button>
+        <button type="button" name="button" onclick="removeRow('career-highlights-table');">Remove Row</button>'
+      </div>
       <button type="button" name="button" onclick="generatePlayerWikiPage();">Generate Player Wiki Page</button>
     </div>
 
-    <div id="career-highlights-information" class="container">
-      <label for="career-highlights-table">Career Highlights</label>
-      <table id="career-highlights-table">
-        <tr>
-          <th>Name</th><th>League</th><th>Seasons</th>
-        </tr>
-        <tr>
-          <td><input id="career-highlights-name-1-input" class="" name="Career Highlights Name 1"></td>
-          <td><select id="career-highlights-league-1-select" class="" name="Career Highlights League 1"></select></td>
-          <td><select id="career-highlights-season-1-select" class="" name="Career Highlights Season 1"></select></td>
 
-          <script type="text/javascript">populateSelectWithList('career-highlights-league-1-select', LEAGUE_NAMES, 'Select a League')</script>
-          <script type="text/javascript">populateSelectWithNumbers('career-highlights-season-1-select', 1, CURRENT_SEASON)</script>
-        </tr>
-      </table>
-      <button type="button" name="button" onclick="addRowToHighlightsTable();">Add Row</button>
-      <button type="button" name="button" onclick="removeRow('career-highlights-table');">Remove Row</button>'
-    </div>
   </body>
 </html>
