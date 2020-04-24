@@ -68,7 +68,8 @@ function generatePlayerWikiPage() {
   const dsflSummary = $('#dsfl-summary-textarea').val();
   const nsflSummary = $('#nsfl-summary-textarea').val();
 
-  //
+  // career highlights
+  const careerHighlights = getCareerHighlightsInformation();
 }
 
 function getCareerHighlightsInformation() {
