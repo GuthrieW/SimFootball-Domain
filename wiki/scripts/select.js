@@ -1,8 +1,10 @@
 function populateSelectWithList(selectId, options, defaultOption = 'Select an option') {
   emptySelect(selectId);
+
   if (defaultOption != null) {
     appendOptionToSelect(selectId, defaultOption);
   }
+
   $.each(options, function(index, option) {
     appendOptionToSelect(selectId, option);
   });
@@ -20,10 +22,26 @@ function populateSelectWithNumbers(selectId, min = 1, max = 9) {
   return;
 }
 
-function appendOptionToSelect(selectId, option) {
+function populateSelectWithListOnlyNations(selectId, options, defaultOption = 'Select an option') {
+  emptySelect(selectId);
+
+  if (defaultOption != null) {
+    appendOptionToSelect(selectId, defaultOption);
+  }
+
+  $.each(options, function(index, option) {
+    appendOptionToSelect(selectId, option.name, option.display);
+  });
+
+}
+
+function appendOptionToSelect(selectId, option, value = null) {
+  if (value == null) {
+    value = option;
+  }
   $('#' + selectId).append($('<option/>', {
-    value: option,
-    text: option
+    text: option,
+    value: value
   }));
 
   return;

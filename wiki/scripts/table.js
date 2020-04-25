@@ -19,7 +19,7 @@ function addRowToHighlightsTable() {
   var newRow = '<tr>' +
     '<td><input id="career-highlights-name-' + numRows + '-input" class="" name="Career Highlights Name ' + numRows + '"></td>' +
     '<td><select id="career-highlights-league-' + numRows + '-select" class="" name="Career Highlights League ' + numRows + '"></select></td>' +
-    '<td><select id="career-highlights-seasons-' + numRows + '-select" class="" name="Career Highlights Seaasons '+ numRows + '"></select></td>' +
+    '<td><select id="career-highlights-seasons-' + numRows + '-select" class="" name="Career Highlights Seaasons '+ numRows + '" multiple></select></td>' +
   '</tr>';
   $('#' + highlightsTableId + ' tr:last').after(newRow);
   populateSelectWithList('career-highlights-league-' + numRows + '-select', LEAGUE_NAMES, 'Select a League');

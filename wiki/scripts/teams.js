@@ -6,11 +6,11 @@ function getTeamsAsStrings(league) {
   var teamsArray = [];
   var teamsToAdd;
 
-  if (league === 'both') {
+  if (league === 'BOTH') {
     teamsToAdd = getAllTeams();
-  } else if (league === 'nsfl') {
+  } else if (league === NSFL) {
     teamsToAdd = nsflTeams;
-  } else if (league === 'dsfl') {
+  } else if (league === DSFL) {
     teamsToAdd = dsflTeams;
   }
 
@@ -23,6 +23,16 @@ function getTeamsAsStrings(league) {
 
 function concatenateCityAndName(team) {
   return team.city + " " + team.name;
+}
+
+function getTeamLeague(team) {
+  if (getTeamsAsStrings(NSFL).indexOf(team) > -1) {
+    return NSFL;
+  } else if (getTeamsAsStrings(DSFL).indexOf(team) > -1) {
+    return DSFL;
+  }
+
+  return null;
 }
 
 const nsflTeams = [

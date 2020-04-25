@@ -55,12 +55,12 @@
         <select id="current-team-select" class="" name="Current Team"></select>
         <label for="current-team-since-input">Current Team Since</label>
         <input id="current-team-since-input" type="text" name="Current Team Since" value="">
-        <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings("both"), 'Select a Team')</script>
+        <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings("BOTH"), 'Select a Team')</script>
       </div>
       <div id="birthplace-information" class="container">
         <label for="country-select">Country</label>
         <select id="country-select" class="" name="Country"></select>
-        <script type="text/javascript">populateSelectWithList("country-select", getNationOrStateNames(), 'Select a State or Country')</script>
+        <script type="text/javascript">populateSelectWithListOnlyNations("country-select", nationsOrStates, 'Select a State or Country')</script>
         <!-- <div id="state-province-information" class="">
           <label for="state-province-select">State/Province</label>
           <select id="state-province-select" class="" name="State/Province"></select>
@@ -105,7 +105,7 @@
         <input id="nsfl-round-drafted" type="number" name="" value="" min="1">
         <label for="nsfl-pick-drafted">Pick Number</label>
         <input id="nsfl-pick-drafted" type="number" name="" value="" min="1">
-        <script type="text/javascript">populateSelectWithList("nsfl-team-drafted-by-select", getTeamsAsStrings("nsfl"), 'Select a Team')</script>
+        <script type="text/javascript">populateSelectWithList("nsfl-team-drafted-by-select", getTeamsAsStrings("NSFL"), 'Select a Team')</script>
       </div>
       <div id="dsfl-draft-information" class="container">
         <label for="dsfl-team-drafted-by">DSFL Team Drafted By</label>
@@ -116,7 +116,7 @@
         <input id="dsfl-round-drafted" type="number" name="" value="" min="1">
         <label for="dsfl-pick-drafted">Pick Number</label>
         <input id="dsfl-pick-drafted" type="number" name="" value="" min="1">
-        <script type="text/javascript">populateSelectWithList("dsfl-team-drafted-by-select", getTeamsAsStrings("dsfl"), 'Select a Team')</script>
+        <script type="text/javascript">populateSelectWithList("dsfl-team-drafted-by-select", getTeamsAsStrings("DSFL"), 'Select a Team')</script>
       </div>
       <div id="team-history-information" class="container">
         <label for="team-history-table">Team History</label>
@@ -132,13 +132,13 @@
               <td><input id="team-history-joined-1-input" type="number" name="" value="" min="1"></td>
               <td><input id="team-history-until-1-input" type="number" name="" value="" min="1"></td>
 
-              <script type="text/javascript">populateSelectWithList("team-history-name-1-select", getTeamsAsStrings("both"), 'Select a Team')</script>
+              <script type="text/javascript">populateSelectWithList("team-history-name-1-select", getTeamsAsStrings("BOTH"), 'Select a Team')</script>
             </tr>
           </tbody>
         </table>
         <button type="button" name="button" onclick="addRowToHistoryTable('team-history-table');">Add Row</button>
         <button type="button" name="button" onclick="removeRow('team-history-table');">Remove Row</button>'
-        <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings("both"), 'Select a Team')</script>
+        <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings("BOTH"), 'Select a Team')</script>
       </div>
       <div id="combine-stats-information" class="container">
         <label for="combine-stats-table">Team History</label>
@@ -202,7 +202,7 @@
           <tr>
             <td><input id="career-highlights-name-1-input" class="" name="Career Highlights Name 1"></td>
             <td><select id="career-highlights-league-1-select" class="" name="Career Highlights League 1"></select></td>
-            <td><select id="career-highlights-season-1-select" class="" name="Career Highlights Season 1"></select></td>
+            <td><select id="career-highlights-season-1-select" class="" name="Career Highlights Season 1" multiple></select></td>
 
             <script type="text/javascript">populateSelectWithList('career-highlights-league-1-select', LEAGUE_NAMES, 'Select a League')</script>
             <script type="text/javascript">populateSelectWithNumbers('career-highlights-season-1-select', 1, CURRENT_SEASON)</script>
