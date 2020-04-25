@@ -81,6 +81,15 @@ function createCareerHighlights(careerHighlights) {
   return careerHighlightsString;
 }
 
+function createSummary(league, sumamry) {
+  if (summary.split(' ').length >= 150) {
+    return `===${league} career===
+    ${summary}`;
+  } else {
+    return '';
+  }
+}
+
 function addPlayerInformationToWikiPage(playerInformation) {
   return `{{pending}}
 {{Infobox NSFL biography
@@ -120,10 +129,8 @@ ${playerInformation.collegeSummary}
 ==College career statistics==
 Use [[Blank:StatsTables|this page]] to get the stats table template.
 ==Professional career==
-===DSFL career===
-${playerInformation.dsflSummary} // TODO: need to add function that checks if they filled this out
-===NSFL career===
-${playerInformation.nsflSummary} // TODO: need to add funciton that checks if they filled this out
+${createSummary('DSFL', playerInformation.dsflSummary)}
+${createSummary('NSFL', playerInformation.dsflSummary)}
 {{NSFL predraft
 |    height ft = ${playerInformation.heightFeet}
 |    height in = ${playerInformation.heightInches}
@@ -181,7 +188,8 @@ function getPlayerInformation() {
   playerInformation.combine40YardDash = $('#40-yard-dash-input').val();
   playerInformation.combineShuttleRun = $('#shuttle-run-input').val();
   playerInformation.combineConeDrill = $('#cone-drill-input').val();
-  playerInformation.combineBroadJump = $('#broad-jump-input').val();
+  playerInformation.combineBroadJumpFeet = $('#broad-jump-feet-input').val();
+  playerInformation.combineBroadJumpInches = $('#broad-jump-inches-input').val();
   playerInformation.combineBenchPress = $('#bench-press-input').val();
   playerInformation.combineVertical = $('#vertical-input').val();
   playerInformation.combineWonderlic = $('#wonderlic-input').val();
