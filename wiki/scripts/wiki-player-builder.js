@@ -246,9 +246,9 @@ function getCareerHighlightsInformation() {
 
 function getTeamHistoryInformation() {
   const numRows = getRowsInTable('team-history-table');
-
   var i;
   var teamHistory = [];
+  
   for (i = 1; i < numRows; i++) {
     const rowTeamName = $('#team-history-name-' + i + '-select').val();
     const rowTeamJoined = $('#team-history-joined-' + i + '-input').val();
