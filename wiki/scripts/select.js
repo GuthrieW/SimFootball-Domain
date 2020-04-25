@@ -72,13 +72,26 @@ function checkIfSelectHasMaxSelected(element, max) {
   return;
 }
 
-function updateVisibleStats(element) {
-  var select = $('#' + element.id);
-  // var select = $(element);
-
+function updateVisibleStats(selectElement, tableElementId) {
+  var select = $('#' + selectElement.id);
   var selectedStats = select.val();
+  var table = $('#' + tableElementId);
+  var tableRows = $(`#${tableElementId} > tbody > tr`);
+
+  // check if table has row that it shouldn't
+  $.each(tableRows, function(index, row) {
+    if (selectedStats.indexOf(row.id) < 0) {
+      if (row.id != "headers") {
+        removeSpecificRowFromTable(tableElementId, row.id);
+      }
+    }
+  });
+
+  // add rows that table is missing
   $.each(selectedStats, function(index, stat) {
-    // TODO: add generation of input HTML for player stats
+    if ($('#' + stat).length === 0) {
+      addRowToStatsTable(stat);
+    }
   });
 
   return;

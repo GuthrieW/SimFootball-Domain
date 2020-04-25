@@ -132,8 +132,8 @@ ${playerInformation.nsflSummary} // TODO: need to add funciton that checks if th
 |      shuttle = ${playerInformation.combineShuttleRun}
 |   cone drill = ${playerInformation.combineConeDrill}
 |     vertical = ${playerInformation.combineVertical}
-|     broad ft = ${playerInformation.} // TODO: Need to add input specifically for feet
-|     broad in = ${playerInformation.} // TODO: Need to add input specifically for inches
+|     broad ft = ${playerInformation.combineBroadJump} // TODO: Need to add input specifically for feet
+|     broad in = ${playerInformation.combineBroadJump} // TODO: Need to add input specifically for inches
 |        bench = ${playerInformation.combineBenchPress}
 |    wonderlic = ${playerInformation.combineWonderlic}
 |         note =
@@ -248,7 +248,7 @@ function getTeamHistoryInformation() {
   const numRows = getRowsInTable('team-history-table');
   var i;
   var teamHistory = [];
-  
+
   for (i = 1; i < numRows; i++) {
     const rowTeamName = $('#team-history-name-' + i + '-select').val();
     const rowTeamJoined = $('#team-history-joined-' + i + '-input').val();

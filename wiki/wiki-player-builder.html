@@ -121,7 +121,6 @@
       <div id="team-history-information" class="container">
         <label for="team-history-table">Team History</label>
         <table id="team-history-table">
-          <tbody>
             <tr>
               <th id="team-history-name-header">Team Name</th>
               <th id="team-history-joined-header">Joined</th>
@@ -134,7 +133,6 @@
 
               <script type="text/javascript">populateSelectWithList("team-history-name-1-select", getTeamsAsStrings("BOTH"), 'Select a Team')</script>
             </tr>
-          </tbody>
         </table>
         <button type="button" name="button" onclick="addRowToHistoryTable('team-history-table');">Add Row</button>
         <button type="button" name="button" onclick="removeRow('team-history-table');">Remove Row</button>'
@@ -143,7 +141,6 @@
       <div id="combine-stats-information" class="container">
         <label for="combine-stats-table">Team History</label>
         <table id="combine-stats-table">
-          <tbody>
             <tr>
               <th id="40-yard-dash-header">40 Yard Dash</th>
               <th id="shuttle-run-header">Shuttle Run</th>
@@ -162,7 +159,6 @@
               <td><input id="vertical-input" type="number" name="" value=""></td>
               <td><input id="wonderlic-input" type="number" name="" value=""></td>
             </tr>
-          </tbody>
         </table>
       </div>
       <div id="player-page-id-information" class="container">
@@ -190,7 +186,12 @@
         <textarea id="nsfl-summary-textarea" name="name" rows="8" cols="80"></textarea>
       </div>
       <div id="stats-table-information" class="container">
-        <select id="stats-table-select" class="" name="" onchange="checkIfSelectHasMaxSelected(this, 8); updateVisibleStats(this);" multiple></select>
+        <select id="stats-table-select" class="" name="" onchange="checkIfSelectHasMaxSelected(this, 8); updateVisibleStats(this, 'stats-table');" multiple></select>
+        <table id="stats-table">
+          <tr id="headers">
+            <th>Stat</th><th>DSFL Total</th><th>NSFL Total</th>
+          </tr>
+        </table>
         <script type="text/javascript">populateSelectWithList('stats-table-select', getStatNames(), null)</script>
       </div>
       <div id="career-highlights-information" class="container">
