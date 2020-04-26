@@ -81,13 +81,43 @@ function createCareerHighlights(careerHighlights) {
   return careerHighlightsString;
 }
 
-function createSummary(league, sumamry) {
+function createSummary(league, summary) {
   if (summary.split(' ').length >= 150) {
     return `===${league} career===
     ${summary}`;
   } else {
     return '';
   }
+}
+
+function createCurrentContractSituation(currentTeam) {
+  if (currentTeam != null) {
+    return `for the [[${currentTeam}]] of the [[National Simulation Football League]] (NSFL).`;
+  }
+
+  return 'who is currently a free agent';
+}
+
+function createStatsTable(playerStats) {
+  var playerStatsTable = '';
+  var nsflStats = '';
+  var dsflStats = '';
+  var statCounter = 1;
+
+  for (stat in playerStats) {
+    nsflStats += `| statlabel${statCounter} = [[wp:${statToWikipediaLink(stat.name)}|${stat.name}]]
+    | statvalue${statCounter} = ${nsflTotal}`;
+
+    dsflStats += `| statlabel${statCounter} = [[wp:${statToWikipediaLink(stat.name)}|${stat.name}]]
+    | statvalue${statCounter} = ${dsflTotal}`;
+  }
+
+  playerStatsTable += ` | statleague = NSFL
+  | statweek = ${playerInformation.careerStatsWeek}
+  | statseason = ${playerInformation.careerStatsSeason}\n`;
+  playerStatsTable += nsflStats + '\n' + dsflStats;
+
+  return playerStatsTable;
 }
 
 function addPlayerInformationToWikiPage(playerInformation) {
@@ -101,7 +131,7 @@ function addPlayerInformationToWikiPage(playerInformation) {
 | number              = ${playerInformation.jerseyNumber}
 | current_team        = ${playerInformation.currentTeam}
 | position            = ${playerInformation.position}
-| birth_date          = {{birth date and age2|{{CurrentDate/yy}}|{{CurrentDate/mm}}|{{CurrentDate/dd}}|2000|1|1}}
+| birth_date          = {{birth date and age2|{{CurrentDate/yy}}|{{CurrentDate/mm}}|{{CurrentDate/dd}}|${playerInformation.birthYear}|${monthNumberToName(playerInformation.birthMonth)}|${playerInformation.birthDay}}}
 | birth_place         = ${playerInformation.city}, ${playerInformation.country}
 | death_date          =
 | death_place         =
@@ -121,7 +151,7 @@ function addPlayerInformationToWikiPage(playerInformation) {
 | status              = Active <!-- only other option here should be Retired -->
 | highlights          = ${createCareerHighlights(playerInformation.careerHighlights)}
 }}
-''' ${concatenatePlayerName(playerInformation)} ''' (born January 1, 1900) is an [[wp:American football|American football]] [[wp:Quarterback|quarterback]] who is currently a free agent.
+''' ${concatenatePlayerName(playerInformation)}''' (born ${monthNumberToName(playerInformation.birthMonth)} ${playerInformation.birthDay}, ${playerInformation.birthYear}) is an [[wp:American football|American football]] [[wp:${positionToWikipediaLink(playerInformation.position)}|${playerInformation.position}]] ${createCurrentContractSituation(playerInformation.currentTeam)}. Before beginning his professional career he played college football for ${playerInformation.collegeName} (${playerInformation.collegeAbbreviation}).
 ==Early years==
 ${playerInformation.earlyYears}
 ==College career==
@@ -139,8 +169,8 @@ ${createSummary('NSFL', playerInformation.dsflSummary)}
 |      shuttle = ${playerInformation.combineShuttleRun}
 |   cone drill = ${playerInformation.combineConeDrill}
 |     vertical = ${playerInformation.combineVertical}
-|     broad ft = ${playerInformation.combineBroadJump} // TODO: Need to add input specifically for feet
-|     broad in = ${playerInformation.combineBroadJump} // TODO: Need to add input specifically for inches
+|     broad ft = ${playerInformation.combineBroadJumpFeet}
+|     broad in = ${playerInformation.combineBroadJumpInches}
 |        bench = ${playerInformation.combineBenchPress}
 |    wonderlic = ${playerInformation.combineWonderlic}
 |         note =
@@ -148,10 +178,7 @@ ${createSummary('NSFL', playerInformation.dsflSummary)}
 ===Professional career statistics===
 Use [[Blank:StatsTables|this page]] to get the stats table template.
 ==Achievements and records==
-Use [[Antoine_Delacour#Achievements_and_Records|this section]] as an example.
-
-[[Category:Unsigned players]]
-[[Category:Runningbacks]]`;
+Use [[Antoine_Delacour#Achievements_and_Records|this section]] as an example.`;
 }
 
 function getPlayerInformation() {
@@ -163,7 +190,10 @@ function getPlayerInformation() {
   playerInformation.lastName = $('#last-name-input').val();
 
   // date of birth
-  playerInformation.dateOfBirth = $('#date-of-birth-input').val();
+  var dateInfo = $('#date-of-birth-input').val().split("-");
+  playerInformation.birthYear = dateInfo[0];
+  playerInformation.birthMonth = dateInfo[1];
+  playerInformation.birthDay = dateInfo[2];
 
   // height & weight
   playerInformation.heightFeet = $('#height-feet-input').val();
@@ -229,11 +259,15 @@ function getPlayerInformation() {
   // career highlights
   playerInformation.careerHighlights = getCareerHighlightsInformation();
 
+  playerInformation.careerStats = getStatsInformation();
+  playerInformation.careerStatsSeason = $('#stats-update-until-season').val();
+  playerInformation.careerStatsWeek = $('#stats-update-until-week').val();
+
   return playerInformation;
 }
 
 function getCareerHighlightsInformation() {
-  const numRows = getRowsInTable('career-highlights-table');
+  const numRows = getNumberOfRowsInTable('career-highlights-table');
   var i;
   var careerHighlights = [];
 
@@ -253,7 +287,7 @@ function getCareerHighlightsInformation() {
 }
 
 function getTeamHistoryInformation() {
-  const numRows = getRowsInTable('team-history-table');
+  const numRows = getNumberOfRowsInTable('team-history-table');
   var i;
   var teamHistory = [];
 
@@ -270,4 +304,56 @@ function getTeamHistoryInformation() {
   }
 
   return teamHistory;
+}
+
+function getStatsInformation() {
+  const rows = getRowsInTable('stats-table');
+  var i;
+  var stats = [];
+
+  for (row in rows) {
+    const inputs = $('#' + row.id + ' > td > input');
+    var stats = {};
+    for (input of inputs) {
+      stats.push({
+        name: input[0].val(),
+        dsflTotal: input[1].val(),
+        nsflTotal: input[2].val()
+      })
+    }
+  }
+
+  return;
+}
+
+
+function monthNumberToName(number) {
+  switch(number) {
+    case 1:
+      return 'January';
+    case 2:
+      return 'February';
+    case 3:
+      return 'March';
+    case 4:
+      return 'April';
+    case 5:
+      return 'May';
+    case 6:
+      return 'June';
+    case 7:
+      return 'July';
+    case 8:
+      return 'August';
+    case 9:
+      return 'September';
+    case 10:
+      return 'October';
+    case 11:
+      return 'November';
+    case 12:
+      return 'December';
+    default:
+      return 'Choose a Birth Month';
+  }
 }

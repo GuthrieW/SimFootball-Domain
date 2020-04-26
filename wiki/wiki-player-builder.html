@@ -60,14 +60,11 @@
       <div id="birthplace-information" class="container">
         <label for="country-select">Country</label>
         <select id="country-select" class="" name="Country"></select>
-        <script type="text/javascript">populateSelectWithListOnlyNations("country-select", nationsOrStates, 'Select a State or Country')</script>
-        <!-- <div id="state-province-information" class="">
-          <label for="state-province-select">State/Province</label>
-          <select id="state-province-select" class="" name="State/Province"></select>
-          <script type="text/javascript">checkShowStatesOrProvinces();</script>
-        </div> -->
         <label for="city-input">City</label>
         <input id="city-input" type="text" name="City" value="">
+
+        <script type="text/javascript">populateSelectWithListOnlyNations("country-select", nationsOrStates, 'Select a State or Country')</script>
+
       </div>
       <div id="school-information" class="container">
         <label for="college-full-name">College Name</label>
@@ -84,7 +81,7 @@
       <div id="position-information" class="container">
         <label for="position-select">Position</label>
         <select id="position-select" class="" name="Position"></select>
-        <script type="text/javascript">populateSelectWithList("position-select", positions)</script>
+        <script type="text/javascript">populateSelectWithList("position-select", positions, 'Select a Position')</script>
       </div>
       <div id="jersey-information" class="container">
         <label for="jersey-number-input">Jersey Number</label>
@@ -188,6 +185,9 @@
         <textarea id="nsfl-summary-textarea" name="name" rows="8" cols="80"></textarea>
       </div>
       <div id="stats-table-information" class="container">
+        <label for="stats-table">Stats Updated Until</label>
+        <input id="stats-update-until-season" type="text" name="" value="">
+        <input id="stats-update-until-week" type="text" name="" value="">
         <select id="stats-table-select" class="" name="" onchange="checkIfSelectHasMaxSelected(this, 8); updateVisibleStats(this, 'stats-table');" multiple></select>
         <table id="stats-table">
           <tr id="headers">

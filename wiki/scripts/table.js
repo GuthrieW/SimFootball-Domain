@@ -1,7 +1,7 @@
 function addRowToHistoryTable() {
   const historyTableId = 'team-history-table';
   var element = $('#' + historyTableId);
-  const numRows = getRowsInTable(historyTableId);
+  const numRows = getNumberOfRowsInTable(historyTableId);
   const newRow = `<tr> +
     <td><select id="team-history-name-${numRows}-select" class="" name="Team History Name ${numRows}"></select></td>
     <td><input id="team-history-joined-${numRows}-input" type="number" name="Team History Joined ${numRows}" value="" min="1"></td>
@@ -15,7 +15,7 @@ function addRowToHistoryTable() {
 function addRowToHighlightsTable() {
   const highlightsTableId = 'career-highlights-table';
   var element = $('#' + highlightsTableId);
-  var numRows = getRowsInTable(highlightsTableId);
+  var numRows = getNumberOfRowsInTable(highlightsTableId);
   var newRow = `<tr>
     <td><input id="career-highlights-name-${numRows}-input" class="" name="Career Highlights Name ${numRows}"></td>
     <td><select id="career-highlights-league-${numRows}-select" class="" name="Career Highlights League ${numRows}"></select></td>
@@ -50,7 +50,7 @@ function removeSpecificRowFromTable(tableId, rowId) {
 }
 
 function removeRow(table) {
-  var numRows = getRowsInTable(table);
+  var numRows = getNumberOfRowsInTable(table);
   if (numRows <= 2) {
     return;
   }
@@ -59,6 +59,10 @@ function removeRow(table) {
   return;
 }
 
-function getRowsInTable(table) {
-  return $('#' + table + ' tr').length;
+function getNumberOfRowsInTable(tableId) {
+  return $('#' + tableId + ' tr').length;
+}
+
+function getRowsInTable(tableId) {
+  return $('#' + tableId + ' > tbody > tr');
 }
