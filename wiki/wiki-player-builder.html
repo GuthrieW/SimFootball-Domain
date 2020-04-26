@@ -213,7 +213,12 @@
         <button type="button" name="button" onclick="addRowToHighlightsTable();">Add Row</button>
         <button type="button" name="button" onclick="removeRow('career-highlights-table');">Remove Row</button>'
       </div>
-      <button type="button" name="button" onclick="generatePlayerWikiPage();">Generate Player Wiki Page</button>
+      <div id="page-generation" class="container">
+        <button type="button" name="button" onclick="generatePlayerWikiPage();">Generate Player Wiki Page</button>
+        <button type="button" name="button" onclick="copyNewPage();">Copy New Page</button>
+        <br>
+        <textarea id="player-page-textarea" name="" rows="8" cols="80"></textarea>
+      </div>
     </div>
   </body>
 </html>

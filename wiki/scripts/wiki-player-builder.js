@@ -4,7 +4,13 @@ function generatePlayerWikiPage() {
 
   // need to figure out what to do here
   console.log(playerWikiPageString);
+  $("#player-page-textarea").val(playerWikiPageString);
+}
 
+function copyNewPage() {
+  var text = $('#player-page-textarea');
+  text.select();
+  document.execCommand("copy");
 }
 
 function checkForImageFilename(imageFilename) {
