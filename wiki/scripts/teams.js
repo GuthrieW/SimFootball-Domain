@@ -6,7 +6,7 @@ function getTeamsAsStrings(league) {
   var teamsArray = [];
   var teamsToAdd;
 
-  if (league === 'BOTH') {
+  if (league === BOTH) {
     teamsToAdd = getAllTeams();
   } else if (league === NSFL) {
     teamsToAdd = nsflTeams;
