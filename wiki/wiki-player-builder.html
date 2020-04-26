@@ -54,7 +54,7 @@
         <select id="current-team-select" class="" name="Current Team"></select>
         <label for="current-team-since-input">Current Team Since</label>
         <input id="current-team-since-input" type="text" name="Current Team Since" value="">
-        <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings("BOTH"), 'Select a Team')</script>
+        <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings(BOTH), 'Select a Team')</script>
       </div>
       <div id="birthplace-information" class="container">
         <label for="country-select">Country</label>
@@ -125,12 +125,12 @@
               <td><input id="team-history-joined-1-input" type="number" name="" value="" min="1"></td>
               <td><input id="team-history-until-1-input" type="number" name="" value="" min="1"></td>
 
-              <script type="text/javascript">populateSelectWithList("team-history-name-1-select", getTeamsAsStrings("BOTH"), 'Select a Team')</script>
+              <script type="text/javascript">populateSelectWithList("team-history-name-1-select", getTeamsAsStrings(BOTH), 'Select a Team')</script>
             </tr>
         </table>
         <button type="button" name="button" onclick="addRowToHistoryTable('team-history-table');">Add Row</button>
         <button type="button" name="button" onclick="removeRow('team-history-table');">Remove Row</button>'
-        <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings("BOTH"), 'Select a Team')</script>
+        <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings(BOTH), 'Select a Team')</script>
       </div>
       <div id="combine-stats-information" class="container">
         <label for="combine-stats-table">Team History</label>

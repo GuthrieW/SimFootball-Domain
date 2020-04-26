@@ -8,7 +8,7 @@ function addRowToHistoryTable() {
     <td><input id="team-history-until-${numRows}-input" type="number" name="Team History Until ${numRows}" value="" min="1"></td>
   </tr>`;
   $('#' + historyTableId + ' tr:last').after(newRow);
-  populateSelectWithList('team-history-name-' + numRows + '-select', getTeamsAsStrings("BOTH"), 'Select a Team');
+  populateSelectWithList('team-history-name-' + numRows + '-select', getTeamsAsStrings(BOTH), 'Select a Team');
   return;
 }
 
