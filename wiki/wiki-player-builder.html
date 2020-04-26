@@ -182,9 +182,12 @@
         <textarea id="nsfl-summary-textarea" name="name" rows="8" cols="80"></textarea>
       </div>
       <div id="stats-table-information" class="container">
-        <label for="stats-table">Stats Updated Until</label>
+        <label for="stats-table">Stats Up To Season #</label>
         <input id="stats-update-until-season" type="text" name="" value="">
+        <br>
+        <label for="stats-table">Week #</label>
         <input id="stats-update-until-week" type="text" name="" value="">
+        <br>
         <select id="stats-table-select" class="" name="" onchange="checkIfSelectHasMaxSelected(this, 8); updateVisibleStats(this, 'stats-table');" multiple></select>
         <table id="stats-table">
           <tr id="headers">
