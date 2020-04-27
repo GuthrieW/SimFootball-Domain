@@ -1,3 +1,57 @@
+// NSFL Teams
+const ARIZONA = 'Arizona';
+const AUSTIN = 'Austin';
+const BALTIMORE = 'Baltimore';
+const CHICAGO = 'Chicago';
+const COLORADO = 'Colorado';
+const HONOLULU = 'Honolulu';
+const NEW_ORLEANS = 'New Orleans';
+const ORANGE_COUNTY = 'Orange County';
+const PHILADELPHIA = 'Philadelphia';
+const SAN_JOSE = 'San Jose';
+const SARASOTA = 'Sarasota';
+const YELLOWKNIFE = 'Yellowknife';
+
+// DSFL Teams
+const DALLAS = 'Dallas';
+const KANASA_CITY = 'Kansas City';
+const LONDON = 'London';
+const MINNESOTA = 'Minnesota';
+const MYRTLE_BEACH = 'Myrtle Beach';
+const NORFOLK = 'Norfolk';
+const PALM_BEACH = 'Palm Beach';
+const PORTLAND = 'Portland';
+const SAN_ANTONIO = 'San Antonio';
+const TIJUANA = 'Tijuana';
+
+const nsflTeams = [
+  { city: ARIZONA, name: 'Outlaws', abbreviation: 'AZ' },
+  { city: AUSTIN, name: 'Copperheads', abbreviation: 'AUS' },
+  { city: BALTIMORE, name: 'Hawks', abbreviation: 'BAL' },
+  { city: CHICAGO, name: 'Butchers', abbreviation: 'CHI' },
+  { city: COLORADO, name: 'Yeti', abbreviation: 'COL' },
+  { city: HONOLULU, name: 'Hahalua', abbreviation: 'HON' },
+  { city: NEW_ORLEANS, name: 'Secondline', abbreviation: 'NOLA' },
+  { city: ORANGE_COUNTY, name: 'Otters', abbreviation: 'OCO' },
+  { city: PHILADELPHIA, name: 'Liberty', abbreviation: 'PHI' },
+  { city: SAN_JOSE, name: 'Sabrecats', abbreviation: 'SJS' },
+  { city: SARASOTA, name: 'Sailfish', abbreviation: 'SAR' },
+  { city: YELLOWKNIFE, name: 'Wraiths', abbreviation: 'YKW' }
+];
+
+const dsflTeams = [
+  { city: DALLAS, name: 'Birddogs', abbreviation: 'DAL'},
+  { city: KANASA_CITY, name: 'Coyotes', abbreviation: 'KCC'},
+  { city: LONDON, name: 'Royals', abbreviation: 'LON'},
+  { city: MINNESOTA, name: 'Grey Ducks', abbreviation: 'MIN'},
+  { city: MYRTLE_BEACH, name: 'Buccanneers', abbreviation: 'MBB'},
+  { city: NORFOLK, name: 'Seawolves', abbreviation: 'NOR'},
+  { city: PALM_BEACH, name: 'Solar Bears', abbreviation: 'PBB'},
+  { city: PORTLAND, name: 'Pythons', abbreviation: 'POR'},
+  { city: SAN_ANTONIO, name: 'Marshalls', abbreviation: 'SAM'},
+  { city: TIJUANA, name: 'Luchadores', abbreviation: 'TIJ'},
+];
+
 function getAllTeams() {
   return nsflTeams.concat(dsflTeams);
 }
@@ -34,30 +88,3 @@ function getTeamLeague(team) {
 
   return null;
 }
-
-const nsflTeams = [
-  { city: 'Arizona', name: 'Outlaws', abbreviation: 'AZ' },
-  { city: 'Austin', name: 'Copperheads', abbreviation: 'AUS'},
-  { city: 'Baltimore', name: 'Hawks', abbreviation: 'BAL'},
-  { city: 'Colorado', name: 'Yeti', abbreviation: 'COL'},
-  { city: 'Honolulu', name: 'Hahalua', abbreviation: 'HON'},
-  { city: 'New Orleans', name: 'Secondline', abbreviation: 'NOLA'},
-  { city: 'Orange County', name: 'Otters', abbreviation: 'OCO'},
-  { city: 'Philadelphia', name: 'Liberty', abbreviation: 'PHI'},
-  { city: 'San Jose', name: 'Sabrecats', abbreviation: 'SJS'},
-  { city: 'Sarasota', name: 'Sailfish', abbreviation: 'SAR'},
-  { city: 'Yellowknife', name: 'Wraiths', abbreviation: 'YKW'}
-];
-
-const dsflTeams = [
-  { city: 'Dallas', name: 'Birddogs', abbreviation: 'DAL'},
-  { city: 'Kansas City', name: 'Coyotes', abbreviation: 'KCC'},
-  { city: 'London', name: 'Royals', abbreviation: 'LON'},
-  { city: 'Minnesota', name: 'Grey Ducks', abbreviation: 'MIN'},
-  { city: 'Myrtle Beach', name: 'Buccanneers', abbreviation: 'MBB'},
-  { city: 'Norfolk', name: 'Seawolves', abbreviation: 'NOR'},
-  { city: 'Palm Beach', name: 'Solar Bears', abbreviation: 'PBB'},
-  { city: 'Portland', name: 'Pythons', abbreviation: 'POR'},
-  { city: 'San Antonio', name: 'Marshalls', abbreviation: 'SAM'},
-  { city: 'Tijuana', name: 'Luchadores', abbreviation: 'TIJ'},
-];

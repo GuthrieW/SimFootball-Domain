@@ -1,30 +1,42 @@
+const QUARTERBACK = 'Quarterback';
+const RUNNING_BACK = 'Running Back';
+const WIDE_RECEIVER = 'Wide Receiver';
+const TIGHT_END = 'Tight End';
+const OFFENSIVE_LINE = 'Offensive Line';
+const CORNERBACK = 'Cornerback';
+const LINEBACKER = 'Linebacker';
+const DEFENSIVE_END = 'Defensive End';
+const DEFENSIVE_TACKLE = 'Defensive Tackle';
+const SAFETY = 'Safety';
+const KICKER_PUNTER = 'Kicker/Punter';
+
 const positions = [
-  'Quarterback',
-  'Running Back',
-  'Wide Receiver',
-  'Tight End',
-  'Offensive Line',
-  'Cornerback',
-  'Linebacker',
-  'Defensive End',
-  'Defensive Tackle',
-  'Safety',
-  'Kicker/Punter'
+  QUARTERBACK,
+  RUNNING_BACK,
+  WIDE_RECEIVER,
+  TIGHT_END,
+  OFFENSIVE_LINE,
+  CORNERBACK,
+  LINEBACKER,
+  DEFENSIVE_END,
+  DEFENSIVE_TACKLE,
+  SAFETY,
+  KICKER_PUNTER
 ];
 
 function positionToWikipediaLink(position) {
   switch (position) {
-    case 'Quarterback': return 'Quarterback';
-    case 'Running Back': return 'Running_back';
-    case 'Wide Receiver': return 'Wide_receiver';
-    case 'Tight End': return 'Tight_end';
-    case 'Offensive Line': return 'Offensive_line';
-    case 'Cornerback': return 'Cornerback'
-    case 'Linebacker': return 'Linebacker';
-    case 'Defensive End': return 'Defensive_end';
-    case 'Defensive Tackle': return 'Defensive_tackle';
-    case 'Safety': return 'Safety_(gridiron_football_position)';
-    case 'Kicker/Punter': return 'Placekicker';
+    case QUARTERBACK: return 'Quarterback';
+    case RUNNING_BACK: return 'Running_back';
+    case WIDE_RECEIVER: return 'Wide_receiver';
+    case TIGHT_END: return 'Tight_end';
+    case OFFENSIVE_LINE: return 'Offensive_line';
+    case CORNERBACK: return 'Cornerback'
+    case LINEBACKER: return 'Linebacker';
+    case DEFENSIVE_END: return 'Defensive_end';
+    case DEFENSIVE_TACKLE: return 'Defensive_tackle';
+    case SAFETY: return 'Safety_(gridiron_football_position)';
+    case KICKER_PUNTER: return 'Placekicker';
     default: return '';
   }
 }

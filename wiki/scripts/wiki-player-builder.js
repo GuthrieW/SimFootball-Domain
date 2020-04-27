@@ -104,7 +104,7 @@ function createCurrentContractSituation(currentTeam) {
   return 'who is currently a free agent';
 }
 
-function createStatsTable(playerStats) {
+function createStatsTable(playerStats, careerStatsWeek, careerStatsSeason) {
   var playerStatsTable = '';
   var nsflStats = '';
   var dsflStats = '';
@@ -118,9 +118,9 @@ function createStatsTable(playerStats) {
     | statvalue${statCounter} = ${dsflTotal}`;
   }
 
-  playerStatsTable += ` | statleague = NSFL
-  | statweek = ${playerInformation.careerStatsWeek}
-  | statseason = ${playerInformation.careerStatsSeason}\n`;
+  playerStatsTable += `| statleague = NSFL
+| statweek = ${careerStatsWeek}
+| statseason = ${careerStatsSeason}\n`;
   playerStatsTable += nsflStats + '\n' + dsflStats;
 
   return playerStatsTable;
@@ -156,6 +156,7 @@ function addPlayerInformationToWikiPage(playerInformation) {
 | pastteamsnote       = no
 | status              = Active <!-- only other option here should be Retired -->
 | highlights          = ${createCareerHighlights(playerInformation.careerHighlights)}
+${createStatsTable(playerInformation.playerStats, playerInformation.careerStatsWeek, playerInformation.careerStatsSeason)}
 }}
 ''' ${concatenatePlayerName(playerInformation)}''' (born ${monthNumberToName(playerInformation.birthMonth)} ${playerInformation.birthDay}, ${playerInformation.birthYear}) is an [[wp:American football|American football]] [[wp:${positionToWikipediaLink(playerInformation.position)}|${playerInformation.position}]] ${createCurrentContractSituation(playerInformation.currentTeam)}. Before beginning his professional career he played college football for ${playerInformation.collegeName} (${playerInformation.collegeAbbreviation}).
 ==Early years==
