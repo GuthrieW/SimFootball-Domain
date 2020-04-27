@@ -14,8 +14,7 @@ function populateSelectWithList(selectId, options, defaultOption = 'Select an op
 
 function populateSelectWithNumbers(selectId, min = 1, max = 9) {
   emptySelect(selectId);
-  var i;
-  for (i = min; i <= max; i++) {
+  for (let i = min; i <= max; i++) {
     appendOptionToSelect(selectId, i);
   }
 
