@@ -1,14 +1,3 @@
-function getNationOrStateNames() {
-  var namesArray = [];
-
-  $.each(nationsOrStates, function(index, nationOrState) {
-    namesArray.push(nationOrState.name);
-  });
-
-  return namesArray;
-}
-
-// name, group, categories, display
 const nationsOrStates = [
   { name: "Alabama (US State)", group: "United States", categories: "[[Category:People from Alabama]] [[Category:People from United States]]", display: "[[wp:Alabama (U.S. state)|Alabama]], [[wp:USA|U.S.]]" },
   { name: "Alaska (US State)", group: "United States", categories: "[[Category:People from Alaska]] [[Category:People from United States]]", display: "[[wp:Alaska (U.S. state)|Alaska]], [[wp:USA|U.S.]]" },
@@ -292,3 +281,13 @@ const nationsOrStates = [
   { name: "Zambia", group: "Africa", categories: "[[Category:People from Zambia]][[Category:People from Africa]]", display: "[[wp:Zambia|Zambia]]" },
   { name: "Zimbabwe", group: "Africa", categories: "[[Category:People from Zimbabwe]][[Category:People from Africa]]", display: "[[wp:Zimbabwe|Zimbabwe]]" }
 ];
+
+function getNationOrStateNames() {
+  let namesArray = [];
+
+  $.each(nationsOrStates, function(index, nationOrState) {
+    namesArray.push(nationOrState.name);
+  });
+
+  return namesArray;
+}

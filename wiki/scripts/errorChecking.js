@@ -7,7 +7,7 @@ const VALID_IMAGE_FILE_EXTENSIONS = [
 ];
 
 function checkWithinRangeInput(input, min, max) {
-  var element = $('#' + input.id);
+  let element = $('#' + input.id);
 
   if (element.val() < min || element.val() > max) {
     alert('Please select a value between ' + min + ' and ' + max + ' for ' + element.attr('name'));
@@ -18,7 +18,7 @@ function checkWithinRangeInput(input, min, max) {
 }
 
 function fileHasValidExtensionForImage(input) {
-  var filename = $(input).val();
+  let filename = $(input).val();
 
   for (extension of VALID_IMAGE_FILE_EXTENSIONS) {
     if (filename.endsWith(extension)) {

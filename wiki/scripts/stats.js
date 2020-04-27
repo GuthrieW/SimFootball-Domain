@@ -1,5 +1,3 @@
-
-
 const careerStats = [
   { statName: 'Total Tackles', totallingMethod: 'sum', wikipediaLink: 'wp:Tackle_(football_move)#American_and_Canadian_football' },
   { statName: 'Tackles For Loss', totallingMethod: 'sum', wikipediaLink: 'wp:Tackle_(football_move)#American_and_Canadian_football' },

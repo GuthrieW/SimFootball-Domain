@@ -8,7 +8,7 @@ function generatePlayerWikiPage() {
 }
 
 function copyNewPage() {
-  var text = $('#player-page-textarea');
+  let text = $('#player-page-textarea');
   text.select();
   document.execCommand("copy");
 }
@@ -30,8 +30,8 @@ function createSeasonLink(league, season) {
 }
 
 function createMultipleSeasonLinks(league, seasons) {
-  var seasonLinks = '(';
-  var firstLink = true;
+  let seasonLinks = '(';
+  let firstLink = true;
 
   for (season of seasons) {
     if (firstLink) {
@@ -51,7 +51,7 @@ function createSeasonDraftLink(league, season) {
 }
 
 function concatenatePlayerName(first, middle, last) {
-  var fullName = '';
+  let fullName = '';
 
   if (first) {
     fullName += first + ' ';
@@ -69,7 +69,7 @@ function concatenatePlayerName(first, middle, last) {
 }
 
 function createTeamHistory(teamHistory) {
-  var teamHistoryString = '';
+  let teamHistoryString = '';
   for (team of teamHistory) {
     const league = getTeamLeague(team);
     teamHistoryString += `\n* [[${teamHistory.name}]] ${createSeasonLink(league, teamHistory.joined)}-${createSeasonLink(league, teamHistory.until)}`;
@@ -79,7 +79,7 @@ function createTeamHistory(teamHistory) {
 }
 
 function createCareerHighlights(careerHighlights) {
-  var careerHighlightsString = '';
+  let careerHighlightsString = '';
   for (highlight of careerHighlights) {
     careerHighlightsString += `\n* [[${highlight.league} ${highlight.name}]] ${createMultipleSeasonLinks(highlight.league, highlight.seasons)}`;
   }
@@ -105,17 +105,17 @@ function createCurrentContractSituation(currentTeam) {
 }
 
 function createStatsTable(playerStats, careerStatsWeek, careerStatsSeason) {
-  var playerStatsTable = '';
-  var nsflStats = '';
-  var dsflStats = '';
-  var statCounter = 1;
+  let playerStatsTable = '';
+  let nsflStats = '';
+  let dsflStats = '';
+  let statCounter = 1;
 
   for (stat in playerStats) {
     nsflStats += `| statlabel${statCounter} = [[wp:${statToWikipediaLink(stat.name)}|${stat.name}]]
-    | statvalue${statCounter} = ${nsflTotal}`;
+| statvalue${statCounter} = ${nsflTotal}`;
 
     dsflStats += `| statlabel${statCounter} = [[wp:${statToWikipediaLink(stat.name)}|${stat.name}]]
-    | statvalue${statCounter} = ${dsflTotal}`;
+| statvalue${statCounter} = ${dsflTotal}`;
   }
 
   playerStatsTable += `| statleague = NSFL
@@ -189,7 +189,7 @@ Use [[Antoine_Delacour#Achievements_and_Records|this section]] as an example.`;
 }
 
 function getPlayerInformation() {
-  var playerInformation = {};
+  let playerInformation = {};
 
   // name
   playerInformation.firstName = $('#first-name-input').val();
@@ -197,7 +197,7 @@ function getPlayerInformation() {
   playerInformation.lastName = $('#last-name-input').val();
 
   // date of birth
-  var dateInfo = $('#date-of-birth-input').val().split("-");
+  let dateInfo = $('#date-of-birth-input').val().split("-");
   playerInformation.birthYear = dateInfo[0];
   playerInformation.birthMonth = dateInfo[1];
   playerInformation.birthDay = dateInfo[2];
@@ -275,7 +275,7 @@ function getPlayerInformation() {
 
 function getCareerHighlightsInformation() {
   const numRows = getNumberOfRowsInTable('career-highlights-table');
-  var careerHighlights = [];
+  let careerHighlights = [];
 
   for (let i = 1; i < numRows; i++) {
     const careerHighlightName = $('#career-highlights-name-' + i + '-input').val();
@@ -294,7 +294,7 @@ function getCareerHighlightsInformation() {
 
 function getTeamHistoryInformation() {
   const numRows = getNumberOfRowsInTable('team-history-table');
-  var teamHistory = [];
+  let teamHistory = [];
 
   for (let i = 1; i < numRows; i++) {
     const rowTeamName = $('#team-history-name-' + i + '-select').val();
@@ -313,11 +313,11 @@ function getTeamHistoryInformation() {
 
 function getStatsInformation() {
   const rows = getRowsInTable('stats-table');
-  var stats = [];
+  let stats = [];
 
   for (row in rows) {
     const inputs = $('#' + row.id + ' > td > input');
-    var stats = {};
+    let stats = {};
     for (input of inputs) {
       stats.push({
         name: input[0].val(),
