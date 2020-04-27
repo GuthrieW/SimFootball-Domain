@@ -275,10 +275,9 @@ function getPlayerInformation() {
 
 function getCareerHighlightsInformation() {
   const numRows = getNumberOfRowsInTable('career-highlights-table');
-  var i;
   var careerHighlights = [];
 
-  for (i = 1; i < numRows; i++) {
+  for (var i = 1; i < numRows; i++) {
     const careerHighlightName = $('#career-highlights-name-' + i + '-input').val();
     const careerHighlightLeague = $('#career-highlights-league-' + i + '-select').val();
     const careerHighlightSeasons = $('#career-highlights-season-' + i + '-select').val();
@@ -295,10 +294,9 @@ function getCareerHighlightsInformation() {
 
 function getTeamHistoryInformation() {
   const numRows = getNumberOfRowsInTable('team-history-table');
-  var i;
   var teamHistory = [];
 
-  for (i = 1; i < numRows; i++) {
+  for (var i = 1; i < numRows; i++) {
     const rowTeamName = $('#team-history-name-' + i + '-select').val();
     const rowTeamJoined = $('#team-history-joined-' + i + '-input').val();
     const rowTeamUntil = $('#team-history-until-' + i + '-input').val();
@@ -315,7 +313,6 @@ function getTeamHistoryInformation() {
 
 function getStatsInformation() {
   const rows = getRowsInTable('stats-table');
-  var i;
   var stats = [];
 
   for (row in rows) {
