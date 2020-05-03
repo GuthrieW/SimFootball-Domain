@@ -3,7 +3,6 @@ function generatePlayerWikiPage() {
   const playerWikiPageString = addPlayerInformationToWikiPage(playerInformation);
 
   // need to figure out what to do here
-  console.log(playerWikiPageString);
   $("#player-page-textarea").val(playerWikiPageString);
 }
 
@@ -53,15 +52,15 @@ function createSeasonDraftLink(league, season) {
 function concatenatePlayerName(first, middle, last) {
   let fullName = '';
 
-  if (first) {
+  if (first !== '') {
     fullName += first + ' ';
   }
 
-  if (middle) {
+  if (middle !== '') {
     fullName += middle + ' ';
   }
 
-  if (last) {
+  if (last !== '') {
     fullName += last;
   }
 
@@ -132,7 +131,7 @@ function addPlayerInformationToWikiPage(playerInformation) {
 | name                = ${concatenatePlayerName(playerInformation.firstName, playerInformation.middleName, playerInformation.lastName)}
 | image               = ${playerInformation.imageFilename}
 | image_size          = 250px
-| alt                 = ${checkForImageFilename(playerInformation) ? 'Image of ' + concatenatePlayerName(playerInformation) : ''}
+| alt                 = ${checkForImageFilename(playerInformation) ? 'Image of ' + concatenatePlayerName(playerInformation.firstName, playerInformation.middleName, playerInformation.lastName) : ''}
 | caption             = ${playerInformation.imageCaption}
 | number              = ${playerInformation.jerseyNumber}
 | current_team        = ${playerInformation.currentTeam}
@@ -158,7 +157,7 @@ function addPlayerInformationToWikiPage(playerInformation) {
 | highlights          = ${createCareerHighlights(playerInformation.careerHighlights)}
 ${createStatsTable(playerInformation.playerStats, playerInformation.careerStatsWeek, playerInformation.careerStatsSeason)}
 }}
-''' ${concatenatePlayerName(playerInformation)}''' (born ${monthNumberToName(playerInformation.birthMonth)} ${playerInformation.birthDay}, ${playerInformation.birthYear}) is an [[wp:American football|American football]] [[wp:${positionToWikipediaLink(playerInformation.position)}|${playerInformation.position}]] ${createCurrentContractSituation(playerInformation.currentTeam)}. Before beginning his professional career he played college football for ${playerInformation.collegeName} (${playerInformation.collegeAbbreviation}).
+''' ${concatenatePlayerName(playerInformation.firstName, playerInformation.middleName, playerInformation.lastName)}''' (born ${monthNumberToName(playerInformation.birthMonth)} ${playerInformation.birthDay}, ${playerInformation.birthYear}) is an [[wp:American football|American football]] [[wp:${positionToWikipediaLink(playerInformation.position)}|${playerInformation.position}]] ${createCurrentContractSituation(playerInformation.currentTeam)}. Before beginning his professional career he played college football for ${playerInformation.collegeName} (${playerInformation.collegeAbbreviation}).
 ==Early years==
 ${playerInformation.earlyYears}
 ==College career==
@@ -201,6 +200,10 @@ function getPlayerInformation() {
   playerInformation.birthYear = dateInfo[0];
   playerInformation.birthMonth = dateInfo[1];
   playerInformation.birthDay = dateInfo[2];
+
+  if (playerInformation.birthDay === undefined) {
+    playerInformation.birthDay = '';
+  }
 
   // height & weight
   playerInformation.heightFeet = $('#height-feet-input').val();
@@ -300,6 +303,10 @@ function getTeamHistoryInformation() {
     const rowTeamName = $('#team-history-name-' + i + '-select').val();
     const rowTeamJoined = $('#team-history-joined-' + i + '-input').val();
     const rowTeamUntil = $('#team-history-until-' + i + '-input').val();
+
+    if (rowTeamName === 'Select a Team' || rowTeamJoined === '' || rowTeamUntil === '') {
+      continue;
+    }
 
     teamHistory.push({
       name: rowTeamName,
