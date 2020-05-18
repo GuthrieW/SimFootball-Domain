@@ -30,8 +30,8 @@
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   </head>
   <body>
+
     <div class="container">
-      <input type="checkbox" checked data-toggle="toggle">
       <div id="name-information" class="container">
         <label for="first-name-input">First Name</label>
         <input id="first-name-input" type="text" name="First Name" value="" title="Your player's first name.">
@@ -76,9 +76,40 @@
         <label for="high-school-name">High School Name</label>
         <input id="high-school-name" type="text" name="High School Name" value="">
       </div>
-      <div id="combine-link-information" class="container">
-        <label for="combine-link-input">Combine Link</label>
-        <input id="combine-link-input" type="text" name="Combine Link" value="">
+      <div id="combine-information">
+        <div id="combine-toggle">
+          <label id="combine-information-toggle-label" for="combine-information-toggle">Combine Toggle</label>
+          <input id="combine-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="toggleVisible('combine-link-information');toggleVisible('combine-stats-information');">
+        </div>
+        <div id="combine-link-information" class="container">
+          <label for="combine-link-input">Combine Link</label>
+          <input id="combine-link-input" type="text" name="Combine Link" value="">
+        </div>
+        <div id="combine-stats-information" class="container">
+          <label for="combine-stats-table">Combine Stats</label>
+          <table id="combine-stats-table">
+              <tr>
+                <th id="40-yard-dash-header">40 Yard Dash</th>
+                <th id="shuttle-run-header">Shuttle Run</th>
+                <th id="cone-drill-header">Cone Drill</th>
+                <th id="broad-jump-header">Broad Jump (ft)</th>
+                <th id="broad-jump-header">Broad Jump (in)</th>
+                <th id="bench-press-header">Bench Press</th>
+                <th id="vertical-header">Vertical</th>
+                <th id="wonderlic-header">Wonderlic</th>
+              </tr>
+              <tr>
+                <td><input id="40-yard-dash-input" type="number" name="" value=""></td>
+                <td><input id="shuttle-run-input" type="number" name="" value=""></td>
+                <td><input id="cone-drill-input" type="number" name="" value=""></td>
+                <td><input id="broad-jump-feet-input" type="number" name="" value=""></td>
+                <td><input id="broad-jump-inches-input" type="number" name="" value=""></td>
+                <td><input id="bench-press-input" type="number" name="" value=""></td>
+                <td><input id="vertical-input" type="number" name="" value=""></td>
+                <td><input id="wonderlic-input" type="number" name="" value=""></td>
+              </tr>
+          </table>
+        </div>
       </div>
       <div id="position-information" class="container">
         <label for="position-select">Position</label>
@@ -96,29 +127,64 @@
         <input id="image-caption-input" type="text" name="Image Caption" value="">
       </div>
       <div id="nsfl-draft-information" class="container">
-        <label for="nsfl-team-drafted-by">NSFL Team Drafted By</label>
+        <div id="nsfl-draft-toggle">
+          <label id="nsfl-draft-information-toggle-label" for="nsfl-draft-information-toggle">NSFL Draft Toggle</label>
+          <input id="nsfl-draft-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="
+            toggleVisible('nsfl-team-drafted-by-select-label');
+            toggleVisible('nsfl-team-drafted-by-select');
+            toggleVisible('nsfl-season-drafted-label');
+            toggleVisible('nsfl-season-drafted');
+            toggleVisible('nsfl-round-drafted-label');
+            toggleVisible('nsfl-round-drafted');
+            toggleVisible('nsfl-pick-drafted-label');
+            toggleVisible('nsfl-pick-drafted');
+          ">
+        </div>
+        <label id="nsfl-team-drafted-by-select-label" for="nsfl-team-drafted-by-select">NSFL Team Drafted By</label>
         <select id="nsfl-team-drafted-by-select" class="" name="DSFL Team Drafted By"></select>
-        <label for="nsfl-season-drafted">Season Drafted</label>
+        <label id="nsfl-season-drafted-label" for="nsfl-season-drafted">Season Drafted</label>
         <input id="nsfl-season-drafted" type="number" name="" value="" min="1">
-        <label for="nsfl-round-drafted">Round Drafted</label>
+        <label id="nsfl-round-drafted-label" for="nsfl-round-drafted">Round Drafted</label>
         <input id="nsfl-round-drafted" type="number" name="" value="" min="1">
-        <label for="nsfl-pick-drafted">Pick Number</label>
+        <label id="nsfl-pick-drafted-label" for="nsfl-pick-drafted">Pick Number</label>
         <input id="nsfl-pick-drafted" type="number" name="" value="" min="1">
         <script type="text/javascript">populateSelectWithList("nsfl-team-drafted-by-select", getTeamsAsStrings("NSFL"), 'Select a Team')</script>
       </div>
       <div id="dsfl-draft-information" class="container">
-        <label for="dsfl-team-drafted-by">DSFL Team Drafted By</label>
+        <div id="dsfl-draft-toggle">
+          <label id="dsfl-draft-information-toggle-label" for="dsfl-draft-information-toggle">DSFL Draft Toggle</label>
+          <input id="dsfl-draft-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="
+            toggleVisible('dsfl-team-drafted-by-select-label');
+            toggleVisible('dsfl-team-drafted-by-select');
+            toggleVisible('dsfl-season-drafted-label');
+            toggleVisible('dsfl-season-drafted');
+            toggleVisible('dsfl-round-drafted-label');
+            toggleVisible('dsfl-round-drafted');
+            toggleVisible('dsfl-pick-drafted-label');
+            toggleVisible('dsfl-pick-drafted');
+          ">
+        </div>
+        <label id="dsfl-team-drafted-by-select-label" for="dsfl-team-drafted-by">DSFL Team Drafted By</label>
         <select id="dsfl-team-drafted-by-select" class="" name="NSFL Team Drafted By"></select>
-        <label for="dsfl-season-drafted">Season Drafted</label>
+        <label id="dsfl-season-drafted-label" for="dsfl-season-drafted">Season Drafted</label>
         <input id="dsfl-season-drafted" type="number" name="" value="" min="1">
-        <label for="dsfl-round-drafted">Round Drafted</label>
+        <label id="dsfl-round-drafted-label" for="dsfl-round-drafted">Round Drafted</label>
         <input id="dsfl-round-drafted" type="number" name="" value="" min="1">
-        <label for="dsfl-pick-drafted">Pick Number</label>
+        <label id="dsfl-pick-drafted-label" for="dsfl-pick-drafted">Pick Number</label>
         <input id="dsfl-pick-drafted" type="number" name="" value="" min="1">
         <script type="text/javascript">populateSelectWithList("dsfl-team-drafted-by-select", getTeamsAsStrings("DSFL"), 'Select a Team')</script>
       </div>
       <div id="team-history-information" class="container">
-        <label for="team-history-table">Team History</label>
+        <div id="team-history-toggle">
+          <label id="team-history-information-toggle-label" for="team-history-information-toggle">Team History Toggle</label>
+          <input id="team-history-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="
+            toggleVisible('team-history-table-label');
+            toggleVisible('team-history-table');
+            toggleVisible('team-history-add-row-button');
+            toggleVisible('team-history-remove-row-button');
+          ">
+        </div>
+        <label id="team-history-table-label" for="team-history-table">Team History</label>
         <table id="team-history-table">
             <tr>
               <th id="team-history-name-header">Team Name</th>
@@ -133,34 +199,9 @@
               <script type="text/javascript">populateSelectWithList("team-history-name-1-select", getTeamsAsStrings(BOTH), 'Select a Team')</script>
             </tr>
         </table>
-        <button type="button" name="button" onclick="addRowToHistoryTable('team-history-table');">Add Row</button>
-        <button type="button" name="button" onclick="removeRow('team-history-table');">Remove Row</button>'
+        <button id="team-history-add-row-button" type="button" name="button" onclick="addRowToHistoryTable('team-history-table');">Add Row</button>
+        <button id="team-history-remove-row-button" type="button" name="button" onclick="removeRow('team-history-table');">Remove Row</button>
         <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings(BOTH), 'Select a Team')</script>
-      </div>
-      <div id="combine-stats-information" class="container">
-        <label for="combine-stats-table">Team History</label>
-        <table id="combine-stats-table">
-            <tr>
-              <th id="40-yard-dash-header">40 Yard Dash</th>
-              <th id="shuttle-run-header">Shuttle Run</th>
-              <th id="cone-drill-header">Cone Drill</th>
-              <th id="broad-jump-header">Broad Jump (ft)</th>
-              <th id="broad-jump-header">Broad Jump (in)</th>
-              <th id="bench-press-header">Bench Press</th>
-              <th id="vertical-header">Vertical</th>
-              <th id="wonderlic-header">Wonderlic</th>
-            </tr>
-            <tr>
-              <td><input id="40-yard-dash-input" type="number" name="" value=""></td>
-              <td><input id="shuttle-run-input" type="number" name="" value=""></td>
-              <td><input id="cone-drill-input" type="number" name="" value=""></td>
-              <td><input id="broad-jump-feet-input" type="number" name="" value=""></td>
-              <td><input id="broad-jump-inches-input" type="number" name="" value=""></td>
-              <td><input id="bench-press-input" type="number" name="" value=""></td>
-              <td><input id="vertical-input" type="number" name="" value=""></td>
-              <td><input id="wonderlic-input" type="number" name="" value=""></td>
-            </tr>
-        </table>
       </div>
       <div id="player-page-id-information" class="container">
         <label for="player-page-id-input">Player Page ID</label>
@@ -177,21 +218,46 @@
         <textarea id="college-summary-textarea" name="name" rows="8" cols="80"></textarea>
       </div>
       <div id="dsfl-summary-information" class="container">
-        <label for="dsfl-summary-textarea">DSFL Summary</label>
+        <div id="dsfl-summary-toggle">
+          <label id="dsfl-summary-label"  for="dsfl-history-information-toggle">DSFL Summary Toggle</label>
+          <input id="dsfl-history-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="
+            toggleVisible('dsfl-summary-textarea-label');
+            toggleVisible('dsfl-summary-textarea');
+          ">
+        </div>
+        <label id="dsfl-summary-textarea-label" for="dsfl-summary-textarea">DSFL Summary</label>
         <br>
-        <textarea id="dsfl-summary-textarea"name="name" rows="8" cols="80"></textarea>
+        <textarea id="dsfl-summary-textarea" name="name" rows="8" cols="80"></textarea>
       </div>
       <div id="nsfl-summary-information" class="container">
-        <label for="nsfl-summary-textarea">NSFL Summary</label>
+        <div id="nsfl-summary-toggle">
+          <label id="nsfl-summary-label" for="nsfl-summary-information-toggle">NSFL Summary Toggle</label>
+          <input id="nsfl-summary-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="
+          toggleVisible('nsfl-summary-textarea-label');
+          toggleVisible('nsfl-summary-textarea');
+          ">
+        </div>
+        <label id="nsfl-summary-textarea-label" for="nsfl-summary-textarea">NSFL Summary</label>
         <br>
         <textarea id="nsfl-summary-textarea" name="name" rows="8" cols="80"></textarea>
       </div>
       <div id="stats-table-information" class="container">
-        <label for="stats-table">Stats Up To Season #</label>
-        <input id="stats-update-until-season" type="text" name="" value="">
+        <div id="stats-table-toggle">
+          <label id="stats-table-toggle-label" for="stats-table-toggle">Stats Table Toggle</label>
+          <input id="stats-table-toggle" type="checkbox" data-toggle="toggle" checked onchange="
+          toggleVisible('stats-updated-until-season-label');
+          toggleVisible('stats-updated-until-season');
+          toggleVisible('stats-updated-until-week-label');
+          toggleVisible('stats-updated-until-week');
+          toggleVisible('stats-table-select');
+          toggleVisible('stats-table');
+          ">
+        </div>
+        <label id="stats-updated-until-season-label" for="stats-table">Stats Up To Season #</label>
+        <input id="stats-updated-until-season" type="text" name="" value="">
         <br>
-        <label for="stats-table">Week #</label>
-        <input id="stats-update-until-week" type="text" name="" value="">
+        <label id="stats-updated-until-week-label" for="stats-table">Week #</label>
+        <input id="stats-updated-until-week" type="text" name="" value="">
         <br>
         <select id="stats-table-select" class="" name="" onchange="checkIfSelectHasMaxSelected(this, 8); updateVisibleStats(this, 'stats-table');" multiple></select>
         <table id="stats-table">
@@ -202,7 +268,16 @@
         <script type="text/javascript">populateSelectWithList('stats-table-select', getStatNames(), null)</script>
       </div>
       <div id="career-highlights-information" class="container">
-        <label for="career-highlights-table">Career Highlights</label>
+        <div id="career-highlights-toggle">
+          <label id="career-highlights-toggle-label" for="career-highlights-toggle">Career Highlights Toggle</label>
+          <input id="career-highlights-toggle" type="checkbox" data-toggle="toggle" checked onchange="
+          toggleVisible('career-highlights-table-label');
+          toggleVisible('career-highlights-table');
+          toggleVisible('career-highlights-table-add-row-button');
+          toggleVisible('career-highlights-table-remove-row-button');
+          ">
+        </div>
+        <label id="career-highlights-table-label" for="career-highlights-table">Career Highlights</label>
         <table id="career-highlights-table">
           <tr>
             <th>Name</th><th>League</th><th>Seasons</th>
@@ -215,8 +290,8 @@
             <script type="text/javascript">populateSelectWithNumbers('career-highlights-season-1-select', 1, CURRENT_SEASON)</script>
           </tr>
         </table>
-        <button type="button" name="button" onclick="addRowToHighlightsTable();">Add Row</button>
-        <button type="button" name="button" onclick="removeRow('career-highlights-table');">Remove Row</button>'
+        <button id="career-highlights-table-add-row-button" type="button" name="button" onclick="addRowToHighlightsTable();">Add Row</button>
+        <button id="career-highlights-table-remove-row-button" type="button" name="button" onclick="removeRow('career-highlights-table');">Remove Row</button>
       </div>
       <div id="page-generation" class="container">
         <button type="button" name="button" onclick="generatePlayerWikiPage();">Generate Player Wiki Page</button>

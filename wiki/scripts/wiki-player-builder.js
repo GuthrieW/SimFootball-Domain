@@ -270,8 +270,8 @@ function getPlayerInformation() {
   playerInformation.careerHighlights = getCareerHighlightsInformation();
 
   playerInformation.careerStats = getStatsInformation();
-  playerInformation.careerStatsSeason = $('#stats-update-until-season').val();
-  playerInformation.careerStatsWeek = $('#stats-update-until-week').val();
+  playerInformation.careerStatsSeason = $('#stats-updated-until-season').val();
+  playerInformation.careerStatsWeek = $('#stats-updated-until-week').val();
 
   return playerInformation;
 }
@@ -337,6 +337,12 @@ function getStatsInformation() {
   return;
 }
 
+function toggleVisible(elementId) {
+  var element = $('#' + elementId);
+  element.toggle();
+
+  return;
+}
 
 function monthNumberToName(number) {
   switch(number) {
