@@ -32,7 +32,7 @@
   <body>
 
     <div class="container">
-      <div id="name-information" class="container">
+      <div id="name-information">
         <label for="first-name-input">First Name</label>
         <input id="first-name-input" type="text" name="First Name" value="" title="Your player's first name.">
         <label for="middle-name-input">Middle Name</label>
@@ -40,35 +40,35 @@
         <label for="last-name-input">Last Name</label>
         <input id="last-name-input" type="text" name="Last Name" value="" title="Your player's last name.">
       </div>
-      <div id="birth-information" class="container">
+      <div id="birth-information" class="">
         <label for="date-of-birth-input">Date of Birth</label>
         <input id="date-of-birth-input" type="date" name="Date of Birth" value="">
       </div>
-      <div id="height-information" class="container">
+      <div id="height-information" class="">
         <label for="height-feet-input">Height (ft)</label>
         <input id="height-feet-input" type="number" name="Height (ft)" value="5" min="5" max="6" onchange="checkWithinRangeInput(this, 5, 6);">
         <label for="height-inches-input">(in)</label>
         <input id="height-inches-input" type="number" name="Height (in)" value="0" min="0" max="11" onchange="checkWithinRangeInput(this, 0, 11);">
       </div>
-      <div id="weight-information" class="container">
+      <div id="weight-information" class="">
         <label for="weight-input">Weights (lbs)</label>
         <input id="weight-input" type="number" name="Weight (lbs)" value="160" onchange="checkWithinRangeInput(this, 160, 340);">
       </div>
-      <div id="current-team-information" class="container">
+      <div id="current-team-information" class="">
         <label for="current-team-select">Current Team</label>
         <select id="current-team-select" class="" name="Current Team"></select>
         <label for="current-team-since-input">Current Team Since</label>
         <input id="current-team-since-input" type="text" name="Current Team Since" value="">
         <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings(BOTH), 'Select a Team')</script>
       </div>
-      <div id="birthplace-information" class="container">
+      <div id="birthplace-information" class="">
         <label for="country-select">Country</label>
         <select id="country-select" class="" name="Country"></select>
         <label for="city-input">City</label>
         <input id="city-input" type="text" name="City" value="">
         <script type="text/javascript">populateSelectWithListOnlyNations("country-select", nationsOrStates, 'Select a State or Country')</script>
       </div>
-      <div id="school-information" class="container">
+      <div id="school-information" class="">
         <label for="college-full-name">College Name</label>
         <input id="college-full-name" type="text" name="College Full Name" value="">
         <label for="college-abbreviation">College Abbreviation</label>
@@ -76,16 +76,16 @@
         <label for="high-school-name">High School Name</label>
         <input id="high-school-name" type="text" name="High School Name" value="">
       </div>
-      <div id="combine-information">
+      <div id="combine-information" class="">
         <div id="combine-toggle">
           <label id="combine-information-toggle-label" for="combine-information-toggle">Combine Toggle</label>
           <input id="combine-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="toggleVisible('combine-link-information');toggleVisible('combine-stats-information');">
         </div>
-        <div id="combine-link-information" class="container">
+        <div id="combine-link-information" class="">
           <label for="combine-link-input">Combine Link</label>
           <input id="combine-link-input" type="text" name="Combine Link" value="">
         </div>
-        <div id="combine-stats-information" class="container">
+        <div id="combine-stats-information" class="">
           <label for="combine-stats-table">Combine Stats</label>
           <table id="combine-stats-table">
               <tr>
@@ -111,22 +111,22 @@
           </table>
         </div>
       </div>
-      <div id="position-information" class="container">
+      <div id="position-information" class="">
         <label for="position-select">Position</label>
         <select id="position-select" class="" name="Position"></select>
         <script type="text/javascript">populateSelectWithList("position-select", positions, 'Select a Position')</script>
       </div>
-      <div id="jersey-information" class="container">
+      <div id="jersey-information" class="">
         <label for="jersey-number-input">Jersey Number</label>
         <input id="jersey-number-input" type="number" name="Jersey Number" value="1" min="1" max="99" onchange="checkWithinRangeInput(this, 1, 99);">
       </div>
-      <div id="image-information" class="container">
+      <div id="image-information" class="">
         <label for="image-filename-input">Image Filename</label>
         <input id="image-filename-input" type="text" name="Image Filename" value="" onchange="fileHasValidExtensionForImage(this);">
         <label for="image-caption-input">Image Caption</label>
         <input id="image-caption-input" type="text" name="Image Caption" value="">
       </div>
-      <div id="nsfl-draft-information" class="container">
+      <div id="nsfl-draft-information" class="">
         <div id="nsfl-draft-toggle">
           <label id="nsfl-draft-information-toggle-label" for="nsfl-draft-information-toggle">NSFL Draft Toggle</label>
           <input id="nsfl-draft-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="
@@ -150,7 +150,7 @@
         <input id="nsfl-pick-drafted" type="number" name="" value="" min="1">
         <script type="text/javascript">populateSelectWithList("nsfl-team-drafted-by-select", getTeamsAsStrings("NSFL"), 'Select a Team')</script>
       </div>
-      <div id="dsfl-draft-information" class="container">
+      <div id="dsfl-draft-information" class="">
         <div id="dsfl-draft-toggle">
           <label id="dsfl-draft-information-toggle-label" for="dsfl-draft-information-toggle">DSFL Draft Toggle</label>
           <input id="dsfl-draft-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="
@@ -174,7 +174,7 @@
         <input id="dsfl-pick-drafted" type="number" name="" value="" min="1">
         <script type="text/javascript">populateSelectWithList("dsfl-team-drafted-by-select", getTeamsAsStrings("DSFL"), 'Select a Team')</script>
       </div>
-      <div id="team-history-information" class="container">
+      <div id="team-history-information" class="">
         <div id="team-history-toggle">
           <label id="team-history-information-toggle-label" for="team-history-information-toggle">Team History Toggle</label>
           <input id="team-history-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="
@@ -199,25 +199,25 @@
               <script type="text/javascript">populateSelectWithList("team-history-name-1-select", getTeamsAsStrings(BOTH), 'Select a Team')</script>
             </tr>
         </table>
-        <button id="team-history-add-row-button" type="button" name="button" onclick="addRowToHistoryTable('team-history-table');">Add Row</button>
-        <button id="team-history-remove-row-button" type="button" name="button" onclick="removeRow('team-history-table');">Remove Row</button>
+        <button id="team-history-add-row-button" class="btn btn-primary" type="button" name="button" onclick="addRowToHistoryTable('team-history-table');">Add Row</button>
+        <button id="team-history-remove-row-button" class="btn btn-primary"type="button" name="button" onclick="removeRow('team-history-table');">Remove Row</button>
         <script type="text/javascript">populateSelectWithList("current-team-select", getTeamsAsStrings(BOTH), 'Select a Team')</script>
       </div>
-      <div id="player-page-id-information" class="container">
+      <div id="player-page-id-information" class="">
         <label for="player-page-id-input">Player Page ID</label>
         <input id="player-page-id-input" type="number" name="" value="">
       </div>
-      <div id="early-years-information" class="container">
+      <div id="early-years-information" class="">
         <label for="early-years-textarea">Early Years</label>
         <br>
         <textarea id="early-years-textarea" name="name" rows="8" cols="80"></textarea>
       </div>
-      <div id="college-summary-information" class="container">
+      <div id="college-summary-information" class="">
         <label for="college-summary-textarea">College Summary</label>
         <br>
         <textarea id="college-summary-textarea" name="name" rows="8" cols="80"></textarea>
       </div>
-      <div id="dsfl-summary-information" class="container">
+      <div id="dsfl-summary-information" class="">
         <div id="dsfl-summary-toggle">
           <label id="dsfl-summary-label"  for="dsfl-history-information-toggle">DSFL Summary Toggle</label>
           <input id="dsfl-history-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="
@@ -229,7 +229,7 @@
         <br>
         <textarea id="dsfl-summary-textarea" name="name" rows="8" cols="80"></textarea>
       </div>
-      <div id="nsfl-summary-information" class="container">
+      <div id="nsfl-summary-information" class="">
         <div id="nsfl-summary-toggle">
           <label id="nsfl-summary-label" for="nsfl-summary-information-toggle">NSFL Summary Toggle</label>
           <input id="nsfl-summary-information-toggle" type="checkbox" data-toggle="toggle" checked onchange="
@@ -241,7 +241,7 @@
         <br>
         <textarea id="nsfl-summary-textarea" name="name" rows="8" cols="80"></textarea>
       </div>
-      <div id="stats-table-information" class="container">
+      <div id="stats-table-information" class="">
         <div id="stats-table-toggle">
           <label id="stats-table-toggle-label" for="stats-table-toggle">Stats Table Toggle</label>
           <input id="stats-table-toggle" type="checkbox" data-toggle="toggle" checked onchange="
@@ -267,7 +267,7 @@
         </table>
         <script type="text/javascript">populateSelectWithList('stats-table-select', getStatNames(), null)</script>
       </div>
-      <div id="career-highlights-information" class="container">
+      <div id="career-highlights-information" class="">
         <div id="career-highlights-toggle">
           <label id="career-highlights-toggle-label" for="career-highlights-toggle">Career Highlights Toggle</label>
           <input id="career-highlights-toggle" type="checkbox" data-toggle="toggle" checked onchange="
@@ -290,12 +290,12 @@
             <script type="text/javascript">populateSelectWithNumbers('career-highlights-season-1-select', 1, CURRENT_SEASON)</script>
           </tr>
         </table>
-        <button id="career-highlights-table-add-row-button" type="button" name="button" onclick="addRowToHighlightsTable();">Add Row</button>
-        <button id="career-highlights-table-remove-row-button" type="button" name="button" onclick="removeRow('career-highlights-table');">Remove Row</button>
+        <button id="career-highlights-table-add-row-button" class="btn btn-primary" type="button" name="button" onclick="addRowToHighlightsTable();">Add Row</button>
+        <button id="career-highlights-table-remove-row-button" class="btn btn-primary" type="button" name="button" onclick="removeRow('career-highlights-table');">Remove Row</button>
       </div>
-      <div id="page-generation" class="container">
-        <button type="button" name="button" onclick="generatePlayerWikiPage();">Generate Player Wiki Page</button>
-        <button type="button" name="button" onclick="copyNewPage();">Copy New Page</button>
+      <div id="page-generation" class="">
+        <button type="button" name="generate-page-button" class="btn btn-primary" onclick="generatePlayerWikiPage();">Generate Player Wiki Page</button>
+        <button type="button" name="copy-page-button" class="btn btn-primary" onclick="copyNewPage();">Copy New Page</button>
         <br>
         <textarea id="player-page-textarea" name="" rows="8" cols="80"></textarea>
       </div>
