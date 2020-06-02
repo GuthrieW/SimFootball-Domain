@@ -345,7 +345,7 @@ function toggleVisible(elementId) {
 }
 
 function monthNumberToName(number) {
-  switch(number) {
+  switch (number) {
     case 1:
       return 'January';
     case 2:

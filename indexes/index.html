@@ -1,240 +1,58 @@
 <html>
+
 <head>
 	<title>NSFL &amp; DSFL Results</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" >
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../main.css">
 	<link rel="stylesheet" type="text/css" href="../simpleGrid.css">
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="./index.js" type="text/javascript"></script>
+	<script src="./../config.js" type="text/javascript"></script>
 </head>
+
 <body>
-<div class="gridwrapper" style="text-align: center;">
-	<div class="grid">
-		
-		<div class="col-1-1" style="height: 20px;"> &nbsp; </div> <!-- 20 px spacer at top of page -->
-		
-		<!-- START NSFL section -->
-		<div class="col-1-1">
-			<img src="../img/NSFLMain.png" /><br />
-			NSFL Seasons
+	<div class="gridwrapper" style="text-align: center;">
+		<div class="grid">
+			<div class="col-1-1" style="height: 20px;"> &nbsp; </div>
+			<div class="col-1-1">
+				<img src="../img/NSFLMain.png" />
+				<br>
+				NSFL Seasons
+			</div>
+			<div id="NSFL-indexes" class="col-1-1"> &nbsp; </div>
+			<div class="col-1-1">
+				<br>
+				DSFL Seasons
+			</div>
+			<div id="DSFL-indexes" class="col-1-1"> &nbsp; </div>
+			<div class="col-1-1">
+				<br>
+				Other Indexes
+			</div>
+			<div class="col-1-5">
+				<a href="./S18ProspectBowl/">
+					S18 Prospects
+				</a>
+			</div>
+			<div class="col-1-5">
+				<a href="./S15ProspectBowl/">
+					S15 Prospects
+				</a>
+			</div>
+			<div class="col-1-5">
+				<a href="./NCTS06/">
+					NCT S6
+				</a>
+			</div>
 		</div>
-		<div class="col-1-1"> &nbsp; </div>
-		<div class="col-1-5">
-			<a href="./NSFLS19/">
-				Season 19
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS18/">
-				Season 18
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS17/">
-				Season 17
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS16/">
-				Season 16
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS15/">
-				Season 15
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS14/">
-				Season 14
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS13/">
-				Season 13
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS12/">
-				Season 12
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS11/">
-				Season 11
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS10/">
-				Season 10
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS09/">
-				Season 9
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS08/">
-				Season 8
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS07/">
-				Season 7
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS06/">
-				Season 6
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS05/">
-				Season 5
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS04/">
-				Season 4
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS03/">
-				Season 3
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS02/">
-				Season 2
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NSFLS01/">
-				Season 1
-			</a>
-		</div>
-		<!-- END NSFL section -->
-		
-		<div class="col-1-1"> &nbsp; </div>
-		
-		<!-- START DSFL section -->
-		
-		<div class="col-1-1">
-			<!-- <img src="../img/DSFLMain.png" /><br /> -->
-			DSFL Seasons
-		</div>
-		<div class="col-1-1"> &nbsp; </div>
-		<div class="col-1-5">
-			<a href="./DSFLS19/">
-				Season 19
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS18/">
-				Season 18
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS17/">
-				Season 17
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS16/">
-				Season 16
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS15/">
-				Season 15
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS14/">
-				Season 14
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS13/">
-				Season 13
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS12/">
-				Season 12
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS11/">
-				Season 11
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS10/">
-				Season 10
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS09/">
-				Season 9
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS08/">
-				Season 8
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS07/">
-				Season 7
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS06/">
-				Season 6
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS05/">
-				Season 5
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS04/">
-				Season 4
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./DSFLS03/">
-				Season 3
-			</a>
-		</div>
-		<!-- END DSFL section -->
-		
-		<div class="col-1-1"> &nbsp; </div>
-		
-		<!-- START Other Indexes -->
-		<div class="col-1-1">
-			<!-- <img src="../img/DSFLMain.png" /><br /> -->
-			Other Indexes
-		</div>
-		<div class="col-1-1"> &nbsp; </div>
-		<div class="col-1-5">
-			<a href="./S18ProspectBowl/">
-				S18 Prospects
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./S15ProspectBowl/">
-				S15 Prospects
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="./NCTS06/">
-				NCT S6
-			</a>
-		</div>
-		
-		<!-- END Other Indexes -->
-		
 	</div>
-</div>
+	<script>
+		generateIndexes(CURRENT_SEASON, "NSFL");
+	</script>
+	<script>
+		generateIndexes(CURRENT_SEASON, "DSFL");
+	</script>
+</body>
+
+</html>

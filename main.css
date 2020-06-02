@@ -1,43 +1,43 @@
 		@font-face {
-			font-family: mainText;
-			src: url('http://sim-football.com/fonts/MaddenName.ttf') format('truetype');
-			}
+		  font-family: mainText;
+		  src: url('http://sim-football.com/fonts/MaddenName.ttf') format('truetype');
+		}
 
 		body {
-			background: white;
-			font-family: mainText;
-			font-size: 32px;
-			color: #284163;
+		  background: white;
+		  font-family: mainText;
+		  font-size: 32px;
+		  color: #284163;
 		}
-		
+
 		section, wrapper {
-			text-align: center;
-			border-radius: 1em;
-			padding: 1em;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-right: -50%;
-			transform: translate(-50%, -50%);
-			}
-	
-		a {
-			color: #CC1D1D;
-			font-family: mainText;
-			text-decoration: none;
+		  text-align: center;
+		  border-radius: 1em;
+		  padding: 1em;
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  margin-right: -50%;
+		  transform: translate(-50%, -50%);
 		}
-		
+
+		a {
+		  color: #CC1D1D;
+		  font-family: mainText;
+		  text-decoration: none;
+		}
+
 		a:hover {
-			color: #284163;
-			font-size: 20px;
-			font-family: mainText;
-			text-decoration: none;
+		  color: #284163;
+		  font-size: 20px;
+		  font-family: mainText;
+		  text-decoration: none;
 		}
 
 		.links {
-			font-size: 20px;
+		  font-size: 20px;
 		}
 
 		.bullets {
-			font-size: 14px;
+		  font-size: 14px;
 		}

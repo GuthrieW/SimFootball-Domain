@@ -1,0 +1,1 @@
+const CURRENT_SEASON = 23;

@@ -26,17 +26,29 @@ const positions = [
 
 function positionToWikipediaLink(position) {
   switch (position) {
-    case QUARTERBACK: return 'Quarterback';
-    case RUNNING_BACK: return 'Running_back';
-    case WIDE_RECEIVER: return 'Wide_receiver';
-    case TIGHT_END: return 'Tight_end';
-    case OFFENSIVE_LINE: return 'Offensive_line';
-    case CORNERBACK: return 'Cornerback'
-    case LINEBACKER: return 'Linebacker';
-    case DEFENSIVE_END: return 'Defensive_end';
-    case DEFENSIVE_TACKLE: return 'Defensive_tackle';
-    case SAFETY: return 'Safety_(gridiron_football_position)';
-    case KICKER_PUNTER: return 'Placekicker';
-    default: return '';
+    case QUARTERBACK:
+      return 'Quarterback';
+    case RUNNING_BACK:
+      return 'Running_back';
+    case WIDE_RECEIVER:
+      return 'Wide_receiver';
+    case TIGHT_END:
+      return 'Tight_end';
+    case OFFENSIVE_LINE:
+      return 'Offensive_line';
+    case CORNERBACK:
+      return 'Cornerback'
+    case LINEBACKER:
+      return 'Linebacker';
+    case DEFENSIVE_END:
+      return 'Defensive_end';
+    case DEFENSIVE_TACKLE:
+      return 'Defensive_tackle';
+    case SAFETY:
+      return 'Safety_(gridiron_football_position)';
+    case KICKER_PUNTER:
+      return 'Placekicker';
+    default:
+      return '';
   }
 }
