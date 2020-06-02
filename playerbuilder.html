@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
 	<meta charset="utf-8" />
 	<title>NSFL Player Builder</title>
 	<link rel="icon" href="https://i.imgur.com/k1cP48w.png" />
+	<script type="text/javascript" src="archetypes.js"></script>
 	<style>
 		* {
 			padding: 0px;
@@ -102,1548 +102,255 @@
 		[tooltip]:not([tooltip-persistent]):before {
 			pointer-events: none;
 		}
-
-		/* START ALTERNATE ALERT BOX CSS */
-
-		.hide {
-			display: none;
-		}
-
-		#warningBox {
-			background-color: #F0F0F0;
-			border-radius: 5px;
-			border: solid 1px black;
-			width: 400px;
-			position: absolute;
-			left: 40%;
-			top: 300px;
-			padding: 10px;
-			padding-bottom: 50px;
-			text-align: left;
-		}
-
-		#warningBox:after {
-			margin: 5px;
-		}
-
-		#warningBoxOL {
-			background-color: #F0F0F0;
-			border-radius: 5px;
-			border: solid 1px black;
-			width: 400px;
-			position: absolute;
-			left: 40%;
-			top: 300px;
-			padding: 10px;
-			padding-bottom: 50px;
-			text-align: left;
-		}
-
-		#warningBoxOL:after {
-			margin: 5px;
-		}
-
-		#warningClose {
-			position: absolute;
-			right: 20px;
-			padding: 5px 35px;
-		}
-
-		/* END ALTERNATE ALERT BOX CSS */
 	</style>
-
 	<script>
-		function hideAlert(msgText) {
-
-			warningBox.classList.add("hide");
-			warningBoxOL.classList.add("hide");
-
-		}
-
 		function updateBaseStats() {
+			const archetypeSelector = document.getElementById("selectArchtype");
+			const archetypeId = archetypeSelector.options[archetypeSelector.selectedIndex].id;
+			let chosenArchetype;
 
-			//	var requestURL = './archtypes.json';
-			//	var request = new XMLHttpRequest();
-			//	request.open('GET', requestURL);
-			//	request.responseType = 'json';
-			//	request.send();
-
-			//	request.onload = function() {
-			//		var superHeroes = request.response;
-
-			var archId = document.getElementById("selectArchtype").selectedIndex;
-
-			switch (archId) {
-
-				case 1:
-					// safety: center fielder
-					document.getElementById("a0").value = 40;
-					document.getElementById("a1").value = 70;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 40;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 50;
-					document.getElementById("a6").value = 70;
-					document.getElementById("a7").value = 55;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 70;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 70;
-					document.getElementById("a1_max").innerHTML = 95;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 75;
-					document.getElementById("a6_max").innerHTML = 100;
-					document.getElementById("a7_max").innerHTML = 75;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 466;
+			switch (archetypeId) {
+				case `${emptyBuild.position}-${emptyBuild.archetype}`:
+					chosenArchetype = emptyBuild;
 					break;
-
-				case 2:
-					// safety: playmaker
-					document.getElementById("a0").value = 40;
-					document.getElementById("a1").value = 70;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 50;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 50;
-					document.getElementById("a6").value = 65;
-					document.getElementById("a7").value = 55;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 70;
-					document.getElementById("a1_max").innerHTML = 95;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 75;
-					document.getElementById("a6_max").innerHTML = 95;
-					document.getElementById("a7_max").innerHTML = 85;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 456;
+				case `${safetyCenterFielder.position}-${safetyCenterFielder.archetype}`:
+					chosenArchetype = safetyCenterFielder;
 					break;
-
-				case 3:
-					// safety: run support
-					document.getElementById("a0").value = 50;
-					document.getElementById("a1").value = 60;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 45;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 60;
-					document.getElementById("a6").value = 55;
-					document.getElementById("a7").value = 45;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 80;
-					document.getElementById("a1_max").innerHTML = 90;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 85;
-					document.getElementById("a6_max").innerHTML = 90;
-					document.getElementById("a7_max").innerHTML = 70;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 426;
+				case `${safetyPlaymaker.position}-${safetyPlaymaker.archetype}`:
+					chosenArchetype = safetyPlaymaker;
 					break;
-
-				case 4:
-					// safety: all-around
-					document.getElementById("a0").value = 45;
-					document.getElementById("a1").value = 65;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 45;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 55;
-					document.getElementById("a6").value = 60;
-					document.getElementById("a7").value = 50;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 70;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 75;
-					document.getElementById("a1_max").innerHTML = 95;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 80;
-					document.getElementById("a6_max").innerHTML = 95;
-					document.getElementById("a7_max").innerHTML = 80;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 446;
+				case `${safetyRunSupport.position}-${safetyRunSupport.archetype}`:
+					chosenArchetype = safetyRunSupport;
 					break;
-
-				case 5:
-					// defensive tackle: nose tackle
-					document.getElementById("a0").value = 70;
-					document.getElementById("a1").value = 35;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 45;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 40;
-					document.getElementById("a6").value = 35;
-					document.getElementById("a7").value = 25;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 100;
-					document.getElementById("a1_max").innerHTML = 60;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 75;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 90;
-					document.getElementById("a6_max").innerHTML = 70;
-					document.getElementById("a7_max").innerHTML = 55;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 346;
+				case `${safetyAllAround.position}-${safetyAllAround.archetype}`:
+					chosenArchetype = safetyAllAround;
 					break;
-
-				case 6:
-					// defensive tackle: run stuffer
-					document.getElementById("a0").value = 65;
-					document.getElementById("a1").value = 40;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 45;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 50;
-					document.getElementById("a6").value = 45;
-					document.getElementById("a7").value = 25;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 95;
-					document.getElementById("a1_max").innerHTML = 75;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 75;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 90;
-					document.getElementById("a6_max").innerHTML = 75;
-					document.getElementById("a7_max").innerHTML = 55;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 361;
+				case `${defensiveTackleNoseTackle.position}-${defensiveTackleNoseTackle.archetype}`:
+					chosenArchetype = defensiveTackleNoseTackle;
 					break;
-
-				case 7:
-					// defensive tackle: interior rusher
-					document.getElementById("a0").value = 55;
-					document.getElementById("a1").value = 50;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 40;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 40;
-					document.getElementById("a6").value = 50;
-					document.getElementById("a7").value = 30;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 90;
-					document.getElementById("a1_max").innerHTML = 80;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 70;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 90;
-					document.getElementById("a6_max").innerHTML = 80;
-					document.getElementById("a7_max").innerHTML = 60;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 346;
+				case `${defensiveTackleRunStuffer.position}-${defensiveTackleRunStuffer.archetype}`:
+					chosenArchetype = defensiveTackleRunStuffer;
 					break;
-
-				case 8:
-					// defensive tackle: balanced
-					document.getElementById("a0").value = 60;
-					document.getElementById("a1").value = 45;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 50;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 45;
-					document.getElementById("a6").value = 45;
-					document.getElementById("a7").value = 30;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 95;
-					document.getElementById("a1_max").innerHTML = 75;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 75;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 90;
-					document.getElementById("a6_max").innerHTML = 75;
-					document.getElementById("a7_max").innerHTML = 60;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 361;
+				case `${defensiveTackleInteriorRusher.position}-${defensiveTackleInteriorRusher.archetype}`:
+					chosenArchetype = defensiveTackleInteriorRusher;
 					break;
-
-				case 9:
-					// defensive end: speed rusher
-					document.getElementById("a0").value = 55;
-					document.getElementById("a1").value = 55;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 40;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 50;
-					document.getElementById("a6").value = 65;
-					document.getElementById("a7").value = 35;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 80;
-					document.getElementById("a1_max").innerHTML = 80;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 70;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 95;
-					document.getElementById("a6_max").innerHTML = 85;
-					document.getElementById("a7_max").innerHTML = 55;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 401;
+				case `${defensiveTackleBalanced.position}-${defensiveTackleBalanced.archetype}`:
+					chosenArchetype = defensiveTackleBalanced;
 					break;
-
-				case 10:
-					// defensive end: run stopper
-					document.getElementById("a0").value = 60;
-					document.getElementById("a1").value = 45;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 45;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 60;
-					document.getElementById("a6").value = 55;
-					document.getElementById("a7").value = 25;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 90;
-					document.getElementById("a1_max").innerHTML = 75;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 70;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 95;
-					document.getElementById("a6_max").innerHTML = 80;
-					document.getElementById("a7_max").innerHTML = 50;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 401;
+				case `${defensiveEndSpeedRusher.position}-${defensiveEndSpeedRusher.archetype}`:
+					chosenArchetype = defensiveEndSpeedRusher;
 					break;
-
-				case 11:
-					// defensive end: power rusher
-					document.getElementById("a0").value = 65;
-					document.getElementById("a1").value = 45;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 40;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 55;
-					document.getElementById("a6").value = 60;
-					document.getElementById("a7").value = 30;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 90;
-					document.getElementById("a1_max").innerHTML = 75;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 70;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 95;
-					document.getElementById("a6_max").innerHTML = 80;
-					document.getElementById("a7_max").innerHTML = 55;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 401;
+				case `${defensiveEndRunStopper.position}-${defensiveEndRunStopper.archetype}`:
+					chosenArchetype = defensiveEndRunStopper;
 					break;
-
-				case 12:
-					// defensive end: balanced
-					document.getElementById("a0").value = 60;
-					document.getElementById("a1").value = 50;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 50;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 55;
-					document.getElementById("a6").value = 60;
-					document.getElementById("a7").value = 35;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 85;
-					document.getElementById("a1_max").innerHTML = 75;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 75;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 95;
-					document.getElementById("a6_max").innerHTML = 85;
-					document.getElementById("a7_max").innerHTML = 55;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 421;
+				case `${defensiveEndPowerRusher.position}-${defensiveEndPowerRusher.archetype}`:
+					chosenArchetype = defensiveEndPowerRusher;
 					break;
-
-				case 13:
-					// linebacker: coverage linebacker
-					document.getElementById("a0").value = 50;
-					document.getElementById("a1").value = 65;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 55;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 55;
-					document.getElementById("a6").value = 65;
-					document.getElementById("a7").value = 35;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 80;
-					document.getElementById("a1_max").innerHTML = 90;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 90;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 85;
-					document.getElementById("a6_max").innerHTML = 85;
-					document.getElementById("a7_max").innerHTML = 65;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 451;
+				case `${defensiveEndBalanced.position}-${defensiveEndBalanced.archetype}`:
+					chosenArchetype = defensiveEndBalanced;
 					break;
-
-				case 14:
-					// linebacker: run stopper
-					document.getElementById("a0").value = 60;
-					document.getElementById("a1").value = 55;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 50;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 70;
-					document.getElementById("a6").value = 55;
-					document.getElementById("a7").value = 25;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 85;
-					document.getElementById("a1_max").innerHTML = 85;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 85;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 100;
-					document.getElementById("a6_max").innerHTML = 80;
-					document.getElementById("a7_max").innerHTML = 50;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 441;
+				case `${linebackerCoverageLinebacker.position}-${linebackerCoverageLinebacker.archetype}`:
+					chosenArchetype = linebackerCoverageLinebacker;
 					break;
-
-				case 15:
-					// linebacker: speed rusher
-					document.getElementById("a0").value = 55;
-					document.getElementById("a1").value = 60;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 45;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 60;
-					document.getElementById("a6").value = 65;
-					document.getElementById("a7").value = 25;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 80;
-					document.getElementById("a1_max").innerHTML = 90;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 90;
-					document.getElementById("a6_max").innerHTML = 90;
-					document.getElementById("a7_max").innerHTML = 50;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 426;
+				case `${linebackerRunStopper.position}-${linebackerRunStopper.archetype}`:
+					chosenArchetype = linebackerRunStopper;
 					break;
-
-				case 16:
-					// linebacker: power rusher
-					document.getElementById("a0").value = 65;
-					document.getElementById("a1").value = 55;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 45;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 65;
-					document.getElementById("a6").value = 55;
-					document.getElementById("a7").value = 25;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 90;
-					document.getElementById("a1_max").innerHTML = 85;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 95;
-					document.getElementById("a6_max").innerHTML = 80;
-					document.getElementById("a7_max").innerHTML = 50;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 426;
+				case `${linebackerSpeedRusher.position}-${linebackerSpeedRusher.archetype}`:
+					chosenArchetype = linebackerSpeedRusher;
 					break;
-
-				case 17:
-					// linebacker: balanced
-					document.getElementById("a0").value = 60;
-					document.getElementById("a1").value = 55;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 50;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 70;
-					document.getElementById("a6").value = 60;
-					document.getElementById("a7").value = 30;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 85;
-					document.getElementById("a1_max").innerHTML = 85;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 85;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 95;
-					document.getElementById("a6_max").innerHTML = 85;
-					document.getElementById("a7_max").innerHTML = 55;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 456;
+				case `${linebackerPowerRusher.position}-${linebackerPowerRusher.archetype}`:
+					chosenArchetype = linebackerPowerRusher;
 					break;
-
-				case 18:
-					// cornerback: man to man
-					document.getElementById("a0").value = 35;
-					document.getElementById("a1").value = 70;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 50;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 45;
-					document.getElementById("a6").value = 70;
-					document.getElementById("a7").value = 50;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 55;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 65;
-					document.getElementById("a1_max").innerHTML = 100;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 70;
-					document.getElementById("a6_max").innerHTML = 100;
-					document.getElementById("a7_max").innerHTML = 70;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 426;
+				case `${linebackerBalanced.position}-${linebackerBalanced.archetype}`:
+					chosenArchetype = linebackerBalanced;
 					break;
-
-				case 19:
-					// cornerback: zone
-					document.getElementById("a0").value = 30;
-					document.getElementById("a1").value = 65;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 60;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 40;
-					document.getElementById("a6").value = 60;
-					document.getElementById("a7").value = 55;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 55;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 65;
-					document.getElementById("a1_max").innerHTML = 95;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 85;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 70;
-					document.getElementById("a6_max").innerHTML = 95;
-					document.getElementById("a7_max").innerHTML = 85;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 416;
+				case `${cornerbackManToMan.position}-${cornerbackManToMan.archetype}`:
+					chosenArchetype = cornerbackManToMan;
 					break;
-
-				case 20:
-					// cornerback: all-around
-					document.getElementById("a0").value = 40;
-					document.getElementById("a1").value = 65;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 55;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 45;
-					document.getElementById("a6").value = 65;
-					document.getElementById("a7").value = 50;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 70;
-					document.getElementById("a1_max").innerHTML = 95;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 85;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 80;
-					document.getElementById("a6_max").innerHTML = 95;
-					document.getElementById("a7_max").innerHTML = 80;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 431;
+				case `${cornerbackZone.position}-${cornerbackZone.archetype}`:
+					chosenArchetype = cornerbackZone;
 					break;
-
-				case 21:
-					// kicker/punter: power
-					document.getElementById("a0").value = 25;
-					document.getElementById("a1").value = 30;
-					document.getElementById("a2").value = 20;
-					document.getElementById("a3").value = 50;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 15;
-					document.getElementById("a6").value = 30;
-					document.getElementById("a7").value = 15;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 70;
-					document.getElementById("a12").value = 60;
-					document.getElementById("a0_max").innerHTML = 50;
-					document.getElementById("a1_max").innerHTML = 55;
-					document.getElementById("a2_max").innerHTML = 45;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 40;
-					document.getElementById("a6_max").innerHTML = 55;
-					document.getElementById("a7_max").innerHTML = 40;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 100;
-					document.getElementById("a12_max").innerHTML = 90;
-					document.getElementById("pointsBase").value = 428;
+				case `${cornerbackAllAround.position}-${cornerbackAllAround.archetype}`:
+					chosenArchetype = cornerbackAllAround;
 					break;
-
-				case 22:
-					// kicker/punter: accurate
-					document.getElementById("a0").value = 15;
-					document.getElementById("a1").value = 30;
-					document.getElementById("a2").value = 20;
-					document.getElementById("a3").value = 60;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 15;
-					document.getElementById("a6").value = 30;
-					document.getElementById("a7").value = 15;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 60;
-					document.getElementById("a12").value = 70;
-					document.getElementById("a0_max").innerHTML = 40;
-					document.getElementById("a1_max").innerHTML = 55;
-					document.getElementById("a2_max").innerHTML = 45;
-					document.getElementById("a3_max").innerHTML = 90;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 40;
-					document.getElementById("a6_max").innerHTML = 55;
-					document.getElementById("a7_max").innerHTML = 40;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 90;
-					document.getElementById("a12_max").innerHTML = 100;
-					document.getElementById("pointsBase").value = 438;
+				case `${kickerPunterPower.position}-${kickerPunterPower.archetype}`:
+					chosenArchetype = kickerPunterPower;
 					break;
-
-				case 23:
-					// kicker/punter: balanced
-					document.getElementById("a0").value = 20;
-					document.getElementById("a1").value = 35;
-					document.getElementById("a2").value = 20;
-					document.getElementById("a3").value = 55;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 15;
-					document.getElementById("a6").value = 40;
-					document.getElementById("a7").value = 15;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 65;
-					document.getElementById("a12").value = 65;
-					document.getElementById("a0_max").innerHTML = 45;
-					document.getElementById("a1_max").innerHTML = 60;
-					document.getElementById("a2_max").innerHTML = 45;
-					document.getElementById("a3_max").innerHTML = 85;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 40;
-					document.getElementById("a6_max").innerHTML = 65;
-					document.getElementById("a7_max").innerHTML = 40;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 95;
-					document.getElementById("a12_max").innerHTML = 95;
-					document.getElementById("pointsBase").value = 448;
+				case `${kickerPunterAccurate.position}-${kickerPunterAccurate.archetype}`:
+					chosenArchetype = kickerPunterAccurate;
 					break;
-
-				case 24:
-					// offensive line: pass blocker
-					warningBoxOL.classList.remove("hide");
-					document.getElementById("a0").value = 70;
-					document.getElementById("a1").value = 50;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 60;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 35;
-					document.getElementById("a6").value = 35;
-					document.getElementById("a7").value = 20;
-					document.getElementById("a8").value = 75;
-					document.getElementById("a9").value = 50;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 100;
-					document.getElementById("a1_max").innerHTML = 75;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 85;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 60;
-					document.getElementById("a6_max").innerHTML = 65;
-					document.getElementById("a7_max").innerHTML = 50;
-					document.getElementById("a8_max").innerHTML = 100;
-					document.getElementById("a9_max").innerHTML = 85;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 539;
+				case `${kickerPunterBalanced.position}-${kickerPunterBalanced.archetype}`:
+					chosenArchetype = kickerPunterBalanced;
 					break;
-
-				case 25:
-					// offensive line: run blocker
-					warningBoxOL.classList.remove("hide");
-					document.getElementById("a0").value = 70;
-					document.getElementById("a1").value = 45;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 60;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 35;
-					document.getElementById("a6").value = 40;
-					document.getElementById("a7").value = 20;
-					document.getElementById("a8").value = 50;
-					document.getElementById("a9").value = 75;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 100;
-					document.getElementById("a1_max").innerHTML = 70;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 85;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 60;
-					document.getElementById("a6_max").innerHTML = 70;
-					document.getElementById("a7_max").innerHTML = 50;
-					document.getElementById("a8_max").innerHTML = 85;
-					document.getElementById("a9_max").innerHTML = 100;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 539;
+				case `${offensiveLinePassBlocker.position}-${offensiveLinePassBlocker.archetype}`:
+					chosenArchetype = offensiveLinePassBlocker;
 					break;
-
-				case 26:
-					// offensive line: technician
-					warningBoxOL.classList.remove("hide");
-					document.getElementById("a0").value = 70;
-					document.getElementById("a1").value = 45;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 65;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 35;
-					document.getElementById("a6").value = 35;
-					document.getElementById("a7").value = 20;
-					document.getElementById("a8").value = 65;
-					document.getElementById("a9").value = 65;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 95;
-					document.getElementById("a1_max").innerHTML = 75;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 90;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 60;
-					document.getElementById("a6_max").innerHTML = 65;
-					document.getElementById("a7_max").innerHTML = 50;
-					document.getElementById("a8_max").innerHTML = 95;
-					document.getElementById("a9_max").innerHTML = 95;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 539;
+				case `${offensiveLineRunBlocker.position}-${offensiveLineRunBlocker.archetype}`:
+					chosenArchetype = offensiveLineRunBlocker;
 					break;
-
-				case 27:
-					// offensive line: athletic lineman
-					warningBoxOL.classList.remove("hide");
-					document.getElementById("a0").value = 75;
-					document.getElementById("a1").value = 50;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 55;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 35;
-					document.getElementById("a6").value = 45;
-					document.getElementById("a7").value = 20;
-					document.getElementById("a8").value = 60;
-					document.getElementById("a9").value = 60;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 100;
-					document.getElementById("a1_max").innerHTML = 85;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 60;
-					document.getElementById("a6_max").innerHTML = 85;
-					document.getElementById("a7_max").innerHTML = 50;
-					document.getElementById("a8_max").innerHTML = 90;
-					document.getElementById("a9_max").innerHTML = 90;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 539;
+				case `${offensiveLineTechnician.position}-${offensiveLineTechnician.archetype}`:
+					chosenArchetype = offensiveLineTechnician;
 					break;
-
-				case 28:
-					// tight end: blocking tight end
-					document.getElementById("a0").value = 55;
-					document.getElementById("a1").value = 40;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 45;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 30;
-					document.getElementById("a6").value = 45;
-					document.getElementById("a7").value = 50;
-					document.getElementById("a8").value = 45;
-					document.getElementById("a9").value = 45;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 95;
-					document.getElementById("a1_max").innerHTML = 80;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 75;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 50;
-					document.getElementById("a6_max").innerHTML = 80;
-					document.getElementById("a7_max").innerHTML = 75;
-					document.getElementById("a8_max").innerHTML = 80;
-					document.getElementById("a9_max").innerHTML = 80;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 444;
+				case `${offensiveLineAthleticLineman.position}-${offensiveLineAthleticLineman.archetype}`:
+					chosenArchetype = offensiveLineAthleticLineman;
 					break;
-
-				case 29:
-					// tight end: vertical threat
-					document.getElementById("a0").value = 40;
-					document.getElementById("a1").value = 50;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 45;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 25;
-					document.getElementById("a6").value = 55;
-					document.getElementById("a7").value = 55;
-					document.getElementById("a8").value = 25;
-					document.getElementById("a9").value = 25;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 85;
-					document.getElementById("a1_max").innerHTML = 90;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 50;
-					document.getElementById("a6_max").innerHTML = 90;
-					document.getElementById("a7_max").innerHTML = 80;
-					document.getElementById("a8_max").innerHTML = 50;
-					document.getElementById("a9_max").innerHTML = 55;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 414;
+				case `${tightEndBlockingTightEnd.position}-${tightEndBlockingTightEnd.archetype}`:
+					chosenArchetype = tightEndBlockingTightEnd;
 					break;
-
-				case 30:
-					// tight end: balanced tight end
-					document.getElementById("a0").value = 45;
-					document.getElementById("a1").value = 45;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 50;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 30;
-					document.getElementById("a6").value = 50;
-					document.getElementById("a7").value = 60;
-					document.getElementById("a8").value = 35;
-					document.getElementById("a9").value = 35;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 90;
-					document.getElementById("a1_max").innerHTML = 80;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 50;
-					document.getElementById("a6_max").innerHTML = 85;
-					document.getElementById("a7_max").innerHTML = 85;
-					document.getElementById("a8_max").innerHTML = 70;
-					document.getElementById("a9_max").innerHTML = 75;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 444;
+				case `${tightEndVerticalThreat.position}-${tightEndVerticalThreat.archetype}`:
+					chosenArchetype = tightEndVerticalThreat;
 					break;
-
-				case 31:
-					// tight end: possession tight end
-					document.getElementById("a0").value = 40;
-					document.getElementById("a1").value = 45;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 50;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 25;
-					document.getElementById("a6").value = 50;
-					document.getElementById("a7").value = 65;
-					document.getElementById("a8").value = 30;
-					document.getElementById("a9").value = 30;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 85;
-					document.getElementById("a1_max").innerHTML = 85;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 85;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 50;
-					document.getElementById("a6_max").innerHTML = 85;
-					document.getElementById("a7_max").innerHTML = 90;
-					document.getElementById("a8_max").innerHTML = 50;
-					document.getElementById("a9_max").innerHTML = 55;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 434;
+				case `${tightEndBalancedTightEnd.position}-${tightEndBalancedTightEnd.archetype}`:
+					chosenArchetype = tightEndBalancedTightEnd;
 					break;
-
-				case 32:
-					// wide receiver: possession receiver
-					document.getElementById("a0").value = 35;
-					document.getElementById("a1").value = 60;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 50;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 20;
-					document.getElementById("a6").value = 60;
-					document.getElementById("a7").value = 70;
-					document.getElementById("a8").value = 20;
-					document.getElementById("a9").value = 20;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 70;
-					document.getElementById("a1_max").innerHTML = 90;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 85;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 35;
-					document.getElementById("a6_max").innerHTML = 90;
-					document.getElementById("a7_max").innerHTML = 100;
-					document.getElementById("a8_max").innerHTML = 35;
-					document.getElementById("a9_max").innerHTML = 35;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 459;
+				case `${tightEndPossessionTightEnd.position}-${tightEndPossessionTightEnd.archetype}`:
+					chosenArchetype = tightEndPossessionTightEnd;
 					break;
-
-				case 33:
-					// wide receiver: speed receiver
-					document.getElementById("a0").value = 25;
-					document.getElementById("a1").value = 65;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 40;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 20;
-					document.getElementById("a6").value = 70;
-					document.getElementById("a7").value = 55;
-					document.getElementById("a8").value = 10;
-					document.getElementById("a9").value = 10;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 65;
-					document.getElementById("a1_max").innerHTML = 90;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 35;
-					document.getElementById("a6_max").innerHTML = 100;
-					document.getElementById("a7_max").innerHTML = 90;
-					document.getElementById("a8_max").innerHTML = 35;
-					document.getElementById("a9_max").innerHTML = 35;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 409;
+				case `${wideReceiverPossessionReceiver.position}-${wideReceiverPossessionReceiver.archetype}`:
+					chosenArchetype = wideReceiverPossessionReceiver;
 					break;
-
-				case 34:
-					// wide receiver: red zone threat
-					document.getElementById("a0").value = 45;
-					document.getElementById("a1").value = 55;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 40;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 20;
-					document.getElementById("a6").value = 60;
-					document.getElementById("a7").value = 65;
-					document.getElementById("a8").value = 20;
-					document.getElementById("a9").value = 20;
-					document.getElementById("a10").value = 65;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 75;
-					document.getElementById("a1_max").innerHTML = 90;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 35;
-					document.getElementById("a6_max").innerHTML = 90;
-					document.getElementById("a7_max").innerHTML = 100;
-					document.getElementById("a8_max").innerHTML = 35;
-					document.getElementById("a9_max").innerHTML = 35;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 439;
+				case `${wideReceiverSpeedReceiver.position}-${wideReceiverSpeedReceiver.archetype}`:
+					chosenArchetype = wideReceiverSpeedReceiver;
 					break;
-
-				case 35:
-					// wide receiver: route runner
-					document.getElementById("a0").value = 30;
-					document.getElementById("a1").value = 70;
-					document.getElementById("a2").value = 1;
-					document.getElementById("a3").value = 50;
-					document.getElementById("a4").value = 1;
-					document.getElementById("a5").value = 20;
-					document.getElementById("a6").value = 65;
-					document.getElementById("a7").value = 60;
-					document.getElementById("a8").value = 10;
-					document.getElementById("a9").value = 10;
-					document.getElementById("a10").value = 60;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 70;
-					document.getElementById("a1_max").innerHTML = 95;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 35;
-					document.getElementById("a6_max").innerHTML = 95;
-					document.getElementById("a7_max").innerHTML = 90;
-					document.getElementById("a8_max").innerHTML = 35;
-					document.getElementById("a9_max").innerHTML = 35;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 434;
+				case `${wideReceiverRedZoneThreat.position}-${wideReceiverRedZoneThreat.archetype}`:
+					chosenArchetype = wideReceiverRedZoneThreat;
 					break;
-
-				case 36:
-					// running back: power back
-					document.getElementById("a0").value = 65;
-					document.getElementById("a1").value = 55;
-					document.getElementById("a2").value = 15;
-					document.getElementById("a3").value = 30;
-					document.getElementById("a4").value = 15;
-					document.getElementById("a5").value = 20;
-					document.getElementById("a6").value = 60;
-					document.getElementById("a7").value = 40;
-					document.getElementById("a8").value = 20;
-					document.getElementById("a9").value = 25;
-					document.getElementById("a10").value = 70;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 95;
-					document.getElementById("a1_max").innerHTML = 85;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 75;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 50;
-					document.getElementById("a6_max").innerHTML = 90;
-					document.getElementById("a7_max").innerHTML = 70;
-					document.getElementById("a8_max").innerHTML = 60;
-					document.getElementById("a9_max").innerHTML = 60;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 467;
+				case `${wideReceiverRouteRunner.position}-${wideReceiverRouteRunner.archetype}`:
+					chosenArchetype = wideReceiverRouteRunner;
 					break;
-
-				case 37:
-					// running back: speed back
-					document.getElementById("a0").value = 40;
-					document.getElementById("a1").value = 55;
-					document.getElementById("a2").value = 15;
-					document.getElementById("a3").value = 30;
-					document.getElementById("a4").value = 15;
-					document.getElementById("a5").value = 20;
-					document.getElementById("a6").value = 75;
-					document.getElementById("a7").value = 40;
-					document.getElementById("a8").value = 20;
-					document.getElementById("a9").value = 20;
-					document.getElementById("a10").value = 70;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 70;
-					document.getElementById("a1_max").innerHTML = 95;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 75;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 50;
-					document.getElementById("a6_max").innerHTML = 100;
-					document.getElementById("a7_max").innerHTML = 75;
-					document.getElementById("a8_max").innerHTML = 40;
-					document.getElementById("a9_max").innerHTML = 40;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 467;
+				case `${runningBackPowerBack.position}-${runningBackPowerBack.archetype}`:
+					chosenArchetype = runningBackPowerBack;
 					break;
-
-				case 38:
-					// running back: all-purpose back
-					document.getElementById("a0").value = 55;
-					document.getElementById("a1").value = 55;
-					document.getElementById("a2").value = 15;
-					document.getElementById("a3").value = 35;
-					document.getElementById("a4").value = 15;
-					document.getElementById("a5").value = 20;
-					document.getElementById("a6").value = 60;
-					document.getElementById("a7").value = 50;
-					document.getElementById("a8").value = 25;
-					document.getElementById("a9").value = 25;
-					document.getElementById("a10").value = 70;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 80;
-					document.getElementById("a1_max").innerHTML = 90;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 75;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 50;
-					document.getElementById("a6_max").innerHTML = 95;
-					document.getElementById("a7_max").innerHTML = 85;
-					document.getElementById("a8_max").innerHTML = 50;
-					document.getElementById("a9_max").innerHTML = 50;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 467;
+				case `${runningBackSpeedBack.position}-${runningBackSpeedBack.archetype}`:
+					chosenArchetype = runningBackSpeedBack;
 					break;
-
-				case 39:
-					// running back: receiving back
-					document.getElementById("a0").value = 40;
-					document.getElementById("a1").value = 65;
-					document.getElementById("a2").value = 15;
-					document.getElementById("a3").value = 40;
-					document.getElementById("a4").value = 15;
-					document.getElementById("a5").value = 20;
-					document.getElementById("a6").value = 60;
-					document.getElementById("a7").value = 55;
-					document.getElementById("a8").value = 25;
-					document.getElementById("a9").value = 20;
-					document.getElementById("a10").value = 70;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 70;
-					document.getElementById("a1_max").innerHTML = 95;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 50;
-					document.getElementById("a6_max").innerHTML = 90;
-					document.getElementById("a7_max").innerHTML = 90;
-					document.getElementById("a8_max").innerHTML = 50;
-					document.getElementById("a9_max").innerHTML = 40;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 477;
+				case `${runningBackAllPurposeBack.position}-${runningBackAllPurposeBack.archetype}`:
+					chosenArchetype = runningBackAllPurposeBack;
 					break;
-
-				case 40:
-					// running back: blocking back
-					document.getElementById("a0").value = 65;
-					document.getElementById("a1").value = 50;
-					document.getElementById("a2").value = 15;
-					document.getElementById("a3").value = 45;
-					document.getElementById("a4").value = 15;
-					document.getElementById("a5").value = 20;
-					document.getElementById("a6").value = 50;
-					document.getElementById("a7").value = 40;
-					document.getElementById("a8").value = 30;
-					document.getElementById("a9").value = 30;
-					document.getElementById("a10").value = 70;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 95;
-					document.getElementById("a1_max").innerHTML = 75;
-					document.getElementById("a2_max").innerHTML = 25;
-					document.getElementById("a3_max").innerHTML = 80;
-					document.getElementById("a4_max").innerHTML = 25;
-					document.getElementById("a5_max").innerHTML = 50;
-					document.getElementById("a6_max").innerHTML = 80;
-					document.getElementById("a7_max").innerHTML = 75;
-					document.getElementById("a8_max").innerHTML = 80;
-					document.getElementById("a9_max").innerHTML = 80;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 467;
+				case `${runningBackReceivingBack.position}-${runningBackReceivingBack.archetype}`:
+					chosenArchetype = runningBackReceivingBack;
 					break;
-
-				case 41:
-					// quarterback: pocket passer
-					document.getElementById("a0").value = 40;
-					document.getElementById("a1").value = 45;
-					document.getElementById("a2").value = 65;
-					document.getElementById("a3").value = 65;
-					document.getElementById("a4").value = 65;
-					document.getElementById("a5").value = 15;
-					document.getElementById("a6").value = 40;
-					document.getElementById("a7").value = 15;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 50;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 70;
-					document.getElementById("a1_max").innerHTML = 80;
-					document.getElementById("a2_max").innerHTML = 95;
-					document.getElementById("a3_max").innerHTML = 95;
-					document.getElementById("a4_max").innerHTML = 95;
-					document.getElementById("a5_max").innerHTML = 35;
-					document.getElementById("a6_max").innerHTML = 75;
-					document.getElementById("a7_max").innerHTML = 35;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 449;
+				case `${runningBackBlockingBack.position}-${runningBackBlockingBack.archetype}`:
+					chosenArchetype = runningBackBlockingBack;
 					break;
-
-				case 42:
-					// quarterback: gunslinger
-					document.getElementById("a0").value = 40;
-					document.getElementById("a1").value = 45;
-					document.getElementById("a2").value = 70;
-					document.getElementById("a3").value = 65;
-					document.getElementById("a4").value = 60;
-					document.getElementById("a5").value = 15;
-					document.getElementById("a6").value = 40;
-					document.getElementById("a7").value = 15;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 50;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 70;
-					document.getElementById("a1_max").innerHTML = 80;
-					document.getElementById("a2_max").innerHTML = 100;
-					document.getElementById("a3_max").innerHTML = 95;
-					document.getElementById("a4_max").innerHTML = 90;
-					document.getElementById("a5_max").innerHTML = 35;
-					document.getElementById("a6_max").innerHTML = 75;
-					document.getElementById("a7_max").innerHTML = 35;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 449;
+				case `${quarterbackPocketPasser.position}-${quarterbackPocketPasser.archetype}`:
+					chosenArchetype = quarterbackPocketPasser;
 					break;
-
-				case 43:
-					// quarterback: mobile
-					document.getElementById("a0").value = 30;
-					document.getElementById("a1").value = 55;
-					document.getElementById("a2").value = 60;
-					document.getElementById("a3").value = 60;
-					document.getElementById("a4").value = 60;
-					document.getElementById("a5").value = 15;
-					document.getElementById("a6").value = 65;
-					document.getElementById("a7").value = 15;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 40;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 60;
-					document.getElementById("a1_max").innerHTML = 90;
-					document.getElementById("a2_max").innerHTML = 90;
-					document.getElementById("a3_max").innerHTML = 90;
-					document.getElementById("a4_max").innerHTML = 90;
-					document.getElementById("a5_max").innerHTML = 35;
-					document.getElementById("a6_max").innerHTML = 90;
-					document.getElementById("a7_max").innerHTML = 35;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 454;
+				case `${quarterbackGunslinger.position}-${quarterbackGunslinger.archetype}`:
+					chosenArchetype = quarterbackGunslinger;
 					break;
-
-				case 44:
-					// quarterback: game manager
-					document.getElementById("a0").value = 45;
-					document.getElementById("a1").value = 50;
-					document.getElementById("a2").value = 55;
-					document.getElementById("a3").value = 65;
-					document.getElementById("a4").value = 65;
-					document.getElementById("a5").value = 15;
-					document.getElementById("a6").value = 50;
-					document.getElementById("a7").value = 15;
-					document.getElementById("a8").value = 1;
-					document.getElementById("a9").value = 1;
-					document.getElementById("a10").value = 50;
-					document.getElementById("a11").value = 1;
-					document.getElementById("a12").value = 1;
-					document.getElementById("a0_max").innerHTML = 80;
-					document.getElementById("a1_max").innerHTML = 80;
-					document.getElementById("a2_max").innerHTML = 90;
-					document.getElementById("a3_max").innerHTML = 95;
-					document.getElementById("a4_max").innerHTML = 95;
-					document.getElementById("a5_max").innerHTML = 35;
-					document.getElementById("a6_max").innerHTML = 80;
-					document.getElementById("a7_max").innerHTML = 35;
-					document.getElementById("a8_max").innerHTML = 25;
-					document.getElementById("a9_max").innerHTML = 25;
-					document.getElementById("a10_max").innerHTML = 100;
-					document.getElementById("a11_max").innerHTML = 25;
-					document.getElementById("a12_max").innerHTML = 25;
-					document.getElementById("pointsBase").value = 449;
+				case `${quarterbackMobile.position}-${quarterbackMobile.archetype}`:
+					chosenArchetype = quarterbackMobile;
 					break;
-
-
+				case `${quarterbackGameManager.position}-${quarterbackGameManager.archetype}`:
+					chosenArchetype = quarterbackGameManager;
+					break;
+				case `${safetyCenterFielder.position}-${safetyCenterFielder.archetype}`:
+					chosenArchetype = safetyCenterFielder;
+					break;
+				case `${safetyCenterFielder.position}-${safetyCenterFielder.archetype}`:
+					chosenArchetype = safetyCenterFielder;
+					break;
 				default:
-					document.getElementById("pointsBase").value = 0;
-					document.getElementById("a0").value = 0;
-					document.getElementById("a1").value = 0;
-					document.getElementById("a2").value = 0;
-					document.getElementById("a3").value = 0;
-					document.getElementById("a4").value = 0;
-					document.getElementById("a5").value = 0;
-					document.getElementById("a6").value = 0;
-					document.getElementById("a7").value = 0;
-					document.getElementById("a8").value = 0;
-					document.getElementById("a9").value = 0;
-					document.getElementById("a10").value = 0;
-					document.getElementById("a11").value = 0;
-					document.getElementById("a12").value = 0;
-					document.getElementById("a0_max").innerHTML = 0;
-					document.getElementById("a1_max").innerHTML = 0;
-					document.getElementById("a2_max").innerHTML = 0;
-					document.getElementById("a3_max").innerHTML = 0;
-					document.getElementById("a4_max").innerHTML = 0;
-					document.getElementById("a5_max").innerHTML = 0;
-					document.getElementById("a6_max").innerHTML = 0;
-					document.getElementById("a7_max").innerHTML = 0;
-					document.getElementById("a8_max").innerHTML = 0;
-					document.getElementById("a9_max").innerHTML = 0;
-					document.getElementById("a10_max").innerHTML = 0;
-					document.getElementById("a11_max").innerHTML = 0;
-					document.getElementById("a12_max").innerHTML = 0;
+					chosenArchetype = emptyBuild;
 					break;
 			}
 
+			document.getElementById("pointsBase").value = chosenArchetype.baseTpe;
+			document.getElementById("strength").value = chosenArchetype.strengthMin;
+			document.getElementById("agility").value = chosenArchetype.agilityMin;
+			document.getElementById("arm").value = chosenArchetype.armMin;
+			document.getElementById("intelligence").value = chosenArchetype.intelligenceMin;
+			document.getElementById("throwing_accuracy").value = chosenArchetype.throwingAccuracyMin;
+			document.getElementById("tackling").value = chosenArchetype.tacklingMin;
+			document.getElementById("speed").value = chosenArchetype.speedMin;
+			document.getElementById("hands").value = chosenArchetype.handsMin;
+			document.getElementById("pass_blocking").value = chosenArchetype.passBlockingMin;
+			document.getElementById("run_blocking").value = chosenArchetype.runBlockingMin;
+			document.getElementById("endurance").value = chosenArchetype.enduranceMin;
+			document.getElementById("kick_power").value = chosenArchetype.kickPowerMin;
+			document.getElementById("kick_accuracy").value = chosenArchetype.kickAccuracyMin;
+			document.getElementById("strength_max").innerHTML = chosenArchetype.strengthMax;
+			document.getElementById("agility_max").innerHTML = chosenArchetype.agilityMax;
+			document.getElementById("arm_max").innerHTML = chosenArchetype.armMax;
+			document.getElementById("intelligence_max").innerHTML = chosenArchetype.intelligenceMax;
+			document.getElementById("throwing_accuracy_max").innerHTML = chosenArchetype.throwingAccuracyMax;
+			document.getElementById("tackling_max").innerHTML = chosenArchetype.tacklingMax;
+			document.getElementById("speed_max").innerHTML = chosenArchetype.speedMax;
+			document.getElementById("hands_max").innerHTML = chosenArchetype.handsMax;
+			document.getElementById("pass_blocking_max").innerHTML = chosenArchetype.passBlockingMax;
+			document.getElementById("run_blocking_max").innerHTML = chosenArchetype.runBlockingMax;
+			document.getElementById("endurance_max").innerHTML = chosenArchetype.enduranceMax;
+			document.getElementById("kick_power_max").innerHTML = chosenArchetype.kickPowerMax;
+			document.getElementById("kick_accuracy_max").innerHTML = chosenArchetype.kickaccuracyMax;
 			updateAllAttributes();
-
-			//}
-
 		}
 
 		function updateSum() {
-			var points = new Array(1);
-			var totalTPE = parseInt(document.getElementById("totalTPE").value);
-			var baseTPE = parseInt(document.getElementById("pointsBase").value);
+			const totalTPE = parseInt(document.getElementById("totalTPE").value);
+			const baseTPE = parseInt(document.getElementById("pointsBase").value);
 
-			var test = document.getElementById("a1_tpe").innerHTML;
-			points = new Array(13);
-			points[0] = parseInt(document.getElementById("a0_tpe").innerHTML);
-			points[1] = parseInt(document.getElementById("a1_tpe").innerHTML);
-			points[2] = parseInt(document.getElementById("a2_tpe").innerHTML);
-			points[3] = parseInt(document.getElementById("a3_tpe").innerHTML);
-			points[4] = parseInt(document.getElementById("a4_tpe").innerHTML);
-			points[5] = parseInt(document.getElementById("a5_tpe").innerHTML);
-			points[6] = parseInt(document.getElementById("a6_tpe").innerHTML);
-			points[7] = parseInt(document.getElementById("a7_tpe").innerHTML);
-			points[8] = parseInt(document.getElementById("a8_tpe").innerHTML);
-			points[9] = parseInt(document.getElementById("a9_tpe").innerHTML);
-			points[10] = parseInt(document.getElementById("a10_tpe").innerHTML);
-			points[11] = parseInt(document.getElementById("a11_tpe").innerHTML);
-			points[12] = parseInt(document.getElementById("a12_tpe").innerHTML);
+			let points = new Array(13);
+			points[0] = parseInt(document.getElementById("strength_tpe").innerHTML);
+			points[1] = parseInt(document.getElementById("agility_tpe").innerHTML);
+			points[2] = parseInt(document.getElementById("arm_tpe").innerHTML);
+			points[3] = parseInt(document.getElementById("intelligence_tpe").innerHTML);
+			points[4] = parseInt(document.getElementById("throwing_accuracy_tpe").innerHTML);
+			points[5] = parseInt(document.getElementById("tackling_tpe").innerHTML);
+			points[6] = parseInt(document.getElementById("speed_tpe").innerHTML);
+			points[7] = parseInt(document.getElementById("hands_tpe").innerHTML);
+			points[8] = parseInt(document.getElementById("pass_blocking_tpe").innerHTML);
+			points[9] = parseInt(document.getElementById("run_blocking_tpe").innerHTML);
+			points[10] = parseInt(document.getElementById("endurance_tpe").innerHTML);
+			points[11] = parseInt(document.getElementById("kick_power_tpe").innerHTML);
+			points[12] = parseInt(document.getElementById("kick_accuracy_tpe").innerHTML);
 
-			var sum = 0;
-			var i = 0;
-			for (i = 0; i < points.length; i++)
+			let sum = 0;
+			for (let i = 0; i < points.length; i++) {
 				sum += points[i];
+			}
 
-			document.getElementById("pointsUsed").innerHTML = sum;
-			var banked = totalTPE + baseTPE - sum;
+			document.getElementById("pointsUsed").innerHTML = sum - baseTPE;
+			const banked = totalTPE + baseTPE - sum;
 			document.getElementById("pointsBanked").innerHTML = banked;
 		}
 
 		function updateAttribute(att) {
-			var tpeValue = 0;
-			var inputValue = document.getElementById(att).value.trim();
+			let tpeValue = 0;
+			let inputValue = document.getElementById(att).value.trim();
 			inputValue = inputValue.replace(" ", "");
-			var attMax = att.concat("_max");
-			var maxValue = document.getElementById(attMax).innerHTML.trim();
+			const attMax = att.concat("_max");
+			let maxValue = document.getElementById(attMax).innerHTML.trim();
 			maxValue = maxValue.replace(" ", "");
 			maxValue = parseInt(maxValue);
 
-			if (isNaN(inputValue) || inputValue.length <= 0)
+			if (isNaN(inputValue) || inputValue.length <= 0) {
 				inputValue = "0";
+			}
 
-			var intValue = parseInt(inputValue);
-			if (intValue > 100)
+			let intValue = parseInt(inputValue);
+			if (intValue > 100) {
 				intValue = 100;
+			}
 
-			if (intValue > maxValue)
+			if (intValue > maxValue) {
 				intValue = maxValue;
+			}
 
-			if (intValue <= 50)
+			if (intValue <= 50) {
 				tpeValue = intValue;
-			else if (intValue <= 70)
+			} else if (intValue <= 70) {
 				tpeValue = 50 + ((intValue - 50) * 2);
-			else if (intValue <= 80)
+			} else if (intValue <= 80) {
 				tpeValue = 90 + ((intValue - 70) * 5);
-			else if (intValue <= 90)
+			} else if (intValue <= 90) {
 				tpeValue = 140 + ((intValue - 80) * 10);
-			else
+			} else {
 				tpeValue = 240 + ((intValue - 90) * 15);
+			}
 
 
-			var tpeField = att.concat("_tpe");
+			const tpeField = att.concat("_tpe");
 			document.getElementById(att).value = intValue;
 			document.getElementById(tpeField).innerHTML = tpeValue;
 
@@ -1651,70 +358,54 @@
 
 		}
 
-		var currentValuePlayer = "a0";
-
 		function updateAllAttributes() {
-			updateAttribute("a0");
-			updateAttribute("a1");
-			updateAttribute("a2");
-			updateAttribute("a3");
-			updateAttribute("a4");
-			updateAttribute("a5");
-			updateAttribute("a6");
-			updateAttribute("a7");
-			updateAttribute("a8");
-			updateAttribute("a9");
-			updateAttribute("a10");
-			updateAttribute("a11");
-			updateAttribute("a12");
+			updateAttribute("strength");
+			updateAttribute("agility");
+			updateAttribute("arm");
+			updateAttribute("intelligence");
+			updateAttribute("throwing_accuracy");
+			updateAttribute("tackling");
+			updateAttribute("speed");
+			updateAttribute("hands");
+			updateAttribute("pass_blocking");
+			updateAttribute("run_blocking");
+			updateAttribute("endurance");
+			updateAttribute("kick_power");
+			updateAttribute("kick_accuracy");
 		}
 
 		function resetAttributes() {
-
-			document.getElementById("a0").value = 0;
-			document.getElementById("a1").value = 0;
-			document.getElementById("a2").value = 0;
-			document.getElementById("a3").value = 0;
-			document.getElementById("a4").value = 0;
-			document.getElementById("a5").value = 0;
-			document.getElementById("a6").value = 0;
-			document.getElementById("a7").value = 0;
-			document.getElementById("a8").value = 0;
-			document.getElementById("a9").value = 0;
-			document.getElementById("a10").value = 0;
-			document.getElementById("a11").value = 0;
-			document.getElementById("a12").value = 0;
+			document.getElementById("strength").value = 0;
+			document.getElementById("agility").value = 0;
+			document.getElementById("arm").value = 0;
+			document.getElementById("intelligence").value = 0;
+			document.getElementById("throwing_accuracy").value = 0;
+			document.getElementById("tackling").value = 0;
+			document.getElementById("speed").value = 0;
+			document.getElementById("hands").value = 0;
+			document.getElementById("pass_blocking").value = 0;
+			document.getElementById("run_blocking").value = 0;
+			document.getElementById("endurance").value = 0;
+			document.getElementById("kick_power").value = 0;
+			document.getElementById("kick_accuracy").value = 0;
 
 			updateAllAttributes();
 		}
 
 		function updateTPE(tpe) {
-			if (isNaN(parseInt(tpe)))
+			if (isNaN(parseInt(tpe))) {
 				tpe = "50";
+			}
 
 			document.getElementById("totalTPE").value = tpe;
 			updateSum();
-
 		}
 	</script>
 </head>
 
 <body>
-
 	<h1>NSFL Player Builder</h1>
 	<div class="tableContainer">
-		<!-- START ALTERNATE ALERT BOXES -->
-		<div id="warningBox" class="hide">
-			<p id="msgText">This archetype was removed prior to season six.<br />Please choose another.
-			<p>
-				<input id="warningClose" type="button" value="OK" onclick="hideAlert();" />
-		</div>
-		<div id="warningBoxOL" class="hide">
-			<p id="msgText">It is not recommended that you create an offensive lineman.<br />We use bots for most OL.
-			<p>
-				<input id="warningClose" type="button" value="OK" onclick="hideAlert();" />
-		</div>
-		<!-- END ALTERNATE ALERT BOXES -->
 		<table>
 			<tr>
 				<th colspan="2">Points Information</th>
@@ -1725,7 +416,7 @@
 					<input type="number" min="50" max="3000" step="1" onchange='updateTPE(value)' id="totalTPE" class="short" value="50" />
 				</td>
 			</tr>
-			<tr>
+			<tr hidden>
 				<td tooltip="Base amount of TPE for this archetype">Base</td>
 				<th>
 					<input type="number" id="pointsBase" value="0" disabled />
@@ -1746,57 +437,56 @@
 			<tr>
 				<th colspan="2">
 					<select id="selectArchtype" onchange='updateBaseStats()'>
-						<option>Select player archetype</option>
-						<option>Safety: Center Fielder</option>
-						<option>Safety: Playmaker</option>
-						<option>Safety: Run Support</option>
-						<option>Safety: All-Around</option>
-						<option>Defensive Tackle: Nose Tackle</option>
-						<option>Defensive Tackle: Run Stuffer</option>
-						<option>Defensive Tackle: Interior Rusher</option>
-						<option>Defensive Tackle: Balanced</option>
-						<option>Defensive End: Speed Rusher</option>
-						<option>Defensive End: Run Stopper</option>
-						<option>Defensive End: Power Rusher</option>
-						<option>Defensive End: Balanced</option>
-						<option>Linebacker: Coverage Linebacker</option>
-						<option>Linebacker: Run Stopper</option>
-						<option>Linebacker: Speed Rusher</option>
-						<option>Linebacker: Power Rusher</option>
-						<option>Linebacker: Balanced</option>
-						<option>Cornerback: Man To Man</option>
-						<option>Cornerback: Zone</option>
-						<option>Cornerback: All-Around</option>
-						<option>Kicker/Punter: Power</option>
-						<option>Kicker/Punter: Accurate</option>
-						<option>Kicker/Punter: Balanced</option>
-						<option>Offensive Line: Pass Blocker</option>
-						<option>Offensive Line: Run Blocker</option>
-						<option>Offensive Line: Technician</option>
-						<option>Offensive Line: Athletic Lineman</option>
-						<option>Tight End: Blocking Tight End</option>
-						<option>Tight End: Vertical Threat</option>
-						<option>Tight End: Balanced Tight End</option>
-						<option>Tight End: Possession Tight End</option>
-						<option>Wide Receiver: Possession Receiver</option>
-						<option>Wide Receiver: Speed Receiver</option>
-						<option>Wide Receiver: Red Zone Threat</option>
-						<option>Wide Receiver: Route Runner</option>
-						<option>Running Back: Power Back</option>
-						<option>Running Back: Speed Back</option>
-						<option>Running Back: All-Purpose Back</option>
-						<option>Running Back: Receiving Back</option>
-						<option>Running Back: Blocking Back</option>
-						<option>Quarterback: Pocket Passer</option>
-						<option>Quarterback: Gunslinger</option>
-						<option>Quarterback: Mobile</option>
-						<option>Quarterback: Game Manager</option>
+						<option id="None-None">Select player archetype</option>
+						<option id="Safety-Center Fielder">Safety: Center Fielder</option>
+						<option id="Safety-Playmaker">Safety: Playmaker</option>
+						<option id="Safety-Run Support">Safety: Run Support</option>
+						<option id="Safety-All Around">Safety: All Around</option>
+						<option id="Defensive Tackle-Nose Tackle">Defensive Tackle: Nose Tackle</option>
+						<option id="Defensive Tackle-Run Stuffer">Defensive Tackle: Run Stuffer</option>
+						<option id="Defensive Tackle-Interior Rusher">Defensive Tackle: Interior Rusher</option>
+						<option id="Defensive Tackle-Balanced">Defensive Tackle: Balanced</option>
+						<option id="Defensive End-Speed Rusher">Defensive End: Speed Rusher</option>
+						<option id="Defensive End-Run Stopper">Defensive End: Run Stopper</option>
+						<option id="Defensive End-Power Rusher">Defensive End: Power Rusher</option>
+						<option id="Defensive End-Balanced">Defensive End: Balanced</option>
+						<option id="Linebacker-Coverage Linebacker">Linebacker: Coverage Linebacker</option>
+						<option id="Linebacker-Run Stopper">Linebacker: Run Stopper</option>
+						<option id="Linebacker-Speed Rusher">Linebacker: Speed Rusher</option>
+						<option id="Linebacker-Power Rusher">Linebacker: Power Rusher</option>
+						<option id="Linebacker-Balanced">Linebacker: Balanced</option>
+						<option id="Cornerback-Man To Man">Cornerback: Man To Man</option>
+						<option id="Cornerback-Zone">Cornerback: Zone</option>
+						<option id="Cornerback-All Around">Cornerback: All Around</option>
+						<option id="Kicker/Punter-Power">Kicker/Punter: Power</option>
+						<option id="Kicker/Punter-Accurate">Kicker/Punter: Accurate</option>
+						<option id="Kicker/Punter-Balanced">Kicker/Punter: Balanced</option>
+						<option id="Offensive Line-Pass Blocker">Offensive Line: Pass Blocker</option>
+						<option id="Offensive Line-Run Blocker">Offensive Line: Run Blocker</option>
+						<option id="Offensive Line-Technician">Offensive Line: Technician</option>
+						<option id="Offensive Line-Athletic Lineman">Offensive Line: Athletic Lineman</option>
+						<option id="Tight End-Blocking Tight End">Tight End: Blocking Tight End</option>
+						<option id="Tight End-Vertical Threat">Tight End: Vertical Threat</option>
+						<option id="Tight End-Balanced Tight End">Tight End: Balanced Tight End</option>
+						<option id="Tight End-Possession Tight End">Tight End: Possession Tight End</option>
+						<option id="Wide Receiver-Possession Receiver">Wide Receiver: Possession Receiver</option>
+						<option id="Wide Receiver-Speed Receiver">Wide Receiver: Speed Receiver</option>
+						<option id="Wide Receiver-Red Zone Threat">Wide Receiver: Red Zone Threat</option>
+						<option id="Wide Receiver-Route Runner">Wide Receiver: Route Runner</option>
+						<option id="Running Back-Power Back">Running Back: Power Back</option>
+						<option id="Running Back-Speed Back">Running Back: Speed Back</option>
+						<option id="Running Back-All Purpose Back">Running Back: All Purpose Back</option>
+						<option id="Running Back-Receiving Back">Running Back: Receiving Back</option>
+						<option id="Running Back-Blocking Back">Running Back: Blocking Back</option>
+						<option id="Quarterback-Pocket Passer">Quarterback: Pocket Passer</option>
+						<option id="Quarterback-Gunslinger">Quarterback: Gunslinger</option>
+						<option id="Quarterback-Mobile">Quarterback: Mobile</option>
+						<option id="Quarterback-Game Manager">Quarterback: Game Manager</option>
 					</select>
 				</th>
 			</tr>
 		</table>
 	</div>
-
 	<div class="tableContainer">
 		<!-- TPE Calculator Table -->
 		<table id="tb_TPEplayer">
@@ -1809,84 +499,85 @@
 			</tr>
 			<tr>
 				<td tooltip="Key attribute for making tackles, breaking tackles, holding blocks and breaking through blocks">Strength</td>
-				<td><input type="number" min="1" max="100" step="1" id="a0" onchange='updateAttribute("a0")' onclick="this.select();" /></td>
-				<td><span id="a0_tpe">0</span></td>
-				<td><span id="a0_max">0</span></td>
+				<td><input type="number" min="1" max="100" step="1" id="strength" onchange='updateAttribute("strength")' onclick="this.select();" /></td>
+				<td><span id="strength_tpe">0</span></td>
+				<td><span id="strength_max">0</span></td>
 			</tr>
 			<tr>
 				<td tooltip="Key attribute for avoiding other players whether you're chasing them or running from them">Agility</td>
-				<td><input type="number" min="1" max="100" step="1" id="a1" onchange='updateAttribute("a1")' onclick="this.select();" /></td>
-				<td><span id="a1_tpe">0</span></td>
-				<td><span id="a1_max">0</span></td>
+				<td><input type="number" min="1" max="100" step="1" id="agility" onchange='updateAttribute("agility")' onclick="this.select();" /></td>
+				<td><span id="agility_tpe">0</span></td>
+				<td><span id="agility_max">0</span></td>
 			</tr>
 			<tr>
-				<td tooltip="QB key Attribute for getting a ball to a receiver. Higher Arm means more completions.">Arm Strength</td>
-				<td><input type="number" min="1" max="100" step="1" id="a2" onchange='updateAttribute("a2")' onclick="this.select();" /></td>
-				<td><span id="a2_tpe">0</span></td>
-				<td><span id="a2_max">0</span></td>
+				<td tooltip="QB key Attribute for getting a ball to a receiver. Higher Arm means more completions.">Arm</td>
+				<td><input type="number" min="1" max="100" step="1" id="arm" onchange='updateAttribute("arm")' onclick="this.select();" /></td>
+				<td><span id="arm_tpe">0</span></td>
+				<td><span id="arm_max">0</span></td>
 			</tr>
 			<tr>
 				<td tooltip="Key attribute for ball awareness. QBs need high INT to avoid interceptions. DBs need high INT to make interceptions.">Intelligence</td>
-				<td><input type="number" min="1" max="100" step="1" id="a3" onchange='updateAttribute("a3")' onclick="this.select();" /></td>
-				<td><span id="a3_tpe">0</span></td>
-				<td><span id="a3_max">0</span></td>
+				<td><input type="number" min="1" max="100" step="1" id="intelligence" onchange='updateAttribute("intelligence")' onclick="this.select();" /></td>
+				<td><span id="intelligence_tpe">0</span></td>
+				<td><span id="intelligence_max">0</span></td>
 			</tr>
 			<tr>
-				<td tooltip="QB accuracy with his throws. Increases completion percentage and lowers interception rate.">Accuracy</td>
-				<td><input type="number" min="1" max="100" step="1" id="a4" onchange='updateAttribute("a4")' onclick="this.select();" /></td>
-				<td><span id="a4_tpe">0</span></td>
-				<td><span id="a4_max">0</span></td>
+				<td tooltip="QB accuracy with his throws. Increases completion percentage and lowers interception rate.">Throwing Accuracy</td>
+				<td><input type="number" min="1" max="100" step="1" id="throwing_accuracy" onchange='updateAttribute("throwing_accuracy")' onclick="this.select();" /></td>
+				<td><span id="throwing_accuracy_tpe">0</span></td>
+				<td><span id="throwing_accuracy_max">0</span></td>
 			</tr>
 			<tr>
 				<td tooltip="Defensive attribute for bringing down a ball carrier.">Tackling</td>
-				<td><input type="number" min="1" max="100" step="1" id="a5" onchange='updateAttribute("a5")' onclick="this.select();" /></td>
-				<td><span id="a5_tpe">0</span></td>
-				<td><span id="a5_max">0</span></td>
+				<td><input type="number" min="1" max="100" step="1" id="tackling" onchange='updateAttribute("tackling")' onclick="this.select();" /></td>
+				<td><span id="tackling_tpe">0</span></td>
+				<td><span id="tackling_max">0</span></td>
 			</tr>
 			<tr>
 				<td tooltip="Key attribute for ALL players. Most important attribute for gaining yards and for chasing down ball carriers.">Speed</td>
-				<td><input type="number" min="1" max="100" step="1" id="a6" onchange='updateAttribute("a6")' onclick="this.select();" /></td>
-				<td><span id="a6_tpe">0</span></td>
-				<td><span id="a6_max">0</span></td>
+				<td><input type="number" min="1" max="100" step="1" id="speed" onchange='updateAttribute("speed")' onclick="this.select();" /></td>
+				<td><span id="speed_tpe">0</span></td>
+				<td><span id="speed_max">0</span></td>
 			</tr>
 			<tr>
 				<td tooltip="Key attribute for making catches, making blocks, and making interceptions.">Hands</td>
-				<td><input type="number" min="1" max="100" step="1" id="a7" onchange='updateAttribute("a7")' onclick="this.select();" /></td>
-				<td><span id="a7_tpe">0</span></td>
-				<td><span id="a7_max">0</span></td>
+				<td><input type="number" min="1" max="100" step="1" id="hands" onchange='updateAttribute("hands")' onclick="this.select();" /></td>
+				<td><span id="hands_tpe">0</span></td>
+				<td><span id="hands_max">0</span></td>
 			</tr>
 			<tr>
 				<td tooltip="Attribute to make successful pass blocks.">Pass Blocking</td>
-				<td><input type="number" min="1" max="100" step="1" id="a8" onchange='updateAttribute("a8")' onclick="this.select();" /></td>
-				<td><span id="a8_tpe">0</span></td>
-				<td><span id="a8_max">0</span></td>
+				<td><input type="number" min="1" max="100" step="1" id="pass_blocking" onchange='updateAttribute("pass_blocking")' onclick="this.select();" /></td>
+				<td><span id="pass_blocking_tpe">0</span></td>
+				<td><span id="pass_blocking_max">0</span></td>
 			</tr>
 			<tr>
 				<td tooltip="Attribute to make successful run blocks.">Run Blocking</td>
-				<td><input type="number" min="1" max="100" step="1" id="a9" onchange='updateAttribute("a9")' onclick="this.select();" /></td>
-				<td><span id="a9_tpe">0</span></td>
-				<td><span id="a9_max">0</span></td>
+				<td><input type="number" min="1" max="100" step="1" id="run_blocking" onchange='updateAttribute("run_blocking")' onclick="this.select();" /></td>
+				<td><span id="run_blocking_tpe">0</span></td>
+				<td><span id="run_blocking_max">0</span></td>
 			</tr>
 			<tr>
 				<td tooltip="Key attribute for all players. Higher endurance players can stay on the field longer. The higher your endurance, the less the backup gets put into play and better you will be later into games.">Endurance</td>
-				<td><input type="number" min="1" max="100" step="1" id="a10" onchange='updateAttribute("a10")' onclick="this.select();" /></td>
-				<td><span id="a10_tpe">0</span></td>
-				<td><span id="a10_max">0</span></td>
+				<td><input type="number" min="1" max="100" step="1" id="endurance" onchange='updateAttribute("endurance")' onclick="this.select();" /></td>
+				<td><span id="endurance_tpe">0</span></td>
+				<td><span id="endurance_max">0</span></td>
 			</tr>
 			<tr>
-				<td tooltip="For kickers this affects field goal percentage at longer distances. For Punters this affects punt distance.">Kick Distance</td>
-				<td><input type="number" min="1" max="100" step="1" id="a11" onchange='updateAttribute("a11")' onclick="this.select();" /></td>
-				<td><span id="a11_tpe">0</span></td>
-				<td><span id="a11_max">0</span></td>
+				<td tooltip="For kickers this affects field goal percentage at longer distances. For Punters this affects punt distance.">Kick Power</td>
+				<td><input type="number" min="1" max="100" step="1" id="kick_power" onchange='updateAttribute("kick_power")' onclick="this.select();" /></td>
+				<td><span id="kick_power_tpe">0</span></td>
+				<td><span id="kick_power_max">0</span></td>
 			</tr>
 			<tr>
 				<td tooltip="For kickers this affects field goal percentage. For Punters this affects killing the ball inside the 20.">Kick Accuracy</td>
-				<td><input type="number" min="1" max="100" step="1" id="a12" onchange='updateAttribute("a12")' onclick="this.select();" /></td>
-				<td><span id="a12_tpe">0</span></td>
-				<td><span id="a12_max">0</span></td>
+				<td><input type="number" min="1" max="100" step="1" id="kick_accuracy" onchange='updateAttribute("kick_accuracy")' onclick="this.select();" /></td>
+				<td><span id="kick_accuracy_tpe">0</span></td>
+				<td><span id="kick_accuracy_max">0</span></td>
 			</tr>
 		</table>
 	</div>
+
 	<div id="updateScaleNotes">
 		<span><b>Player Update Scale</b></span>
 		<table>
